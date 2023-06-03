@@ -12,19 +12,21 @@ export default function Todo({ todo, setTodos }) {
 
   const handleChange = (e) => {
     const status = e.target.checked ? "completed" : "active";
-    const todosData = getLocalStorage('todo');
-    const setData = todosData.map((item) => (item.id === id ? { ...item, status } : item));
-
-    setTodos(setData);
-    setLocalStorage('todo', setData);
+    setTodos((prev) =>
+      prev.map((item) => (item.id === id ? { ...item, status } : item))
+    );
+    // const todosData = getLocalStorage("todo");
+    // const setData = todosData.map((item) =>
+    //   item.id === id ? { ...item, status } : item
+    // );
+    // setLocalStorage("todo", setData);
   };
 
   const handleDelete = () => {
-    const todosData = getLocalStorage('todo');
-    const setData = todosData.filter((item) => item.id !== id);
-
-    setTodos(setData);
-    setLocalStorage('todo', setData);
+    const todosData = getLocalStorage("todo");
+    setTodos((prev) => prev.filter((item) => item.id !== id));
+    // const setData = todosData.filter((item) => item.id !== id);
+    // setLocalStorage("todo", setData);
   };
 
   const handleEdit = () => {
@@ -33,27 +35,24 @@ export default function Todo({ todo, setTodos }) {
 
   const handleTextChange = (e) => {
     const value = e.target.value;
-    const todosData = getLocalStorage('todo');
-    const setData = todosData.map((item) => {
-      if (item.id === id) {
-        return { ...item, text: value };
-      } else {
-        return item;
-      }
-    });
-
-    setTodos(setData);
-    setLocalStorage('todo', setData);
-
-    // setTodos((prev) => {
-    //   return prev.map((item) => {
-    //     if (item.id === id) {
-    //       return { ...item, text: value };
-    //     } else {
-    //       return item;
-    //     }
-    //   });
+    setTodos((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          return { ...item, text: value };
+        } else {
+          return item;
+        }
+      })
+    );
+    // const todosData = getLocalStorage("todo");
+    // const setData = todosData.map((item) => {
+    //   if (item.id === id) {
+    //     return { ...item, text: value };
+    //   } else {
+    //     return item;
+    //   }
     // });
+    // setLocalStorage("todo", setData);
   };
 
   return (
@@ -99,25 +98,24 @@ export default function Todo({ todo, setTodos }) {
   );
 }
 
-const EditButton = styled(motion.div)`
-  ${theme.IweddingButton};
+const EditButton = styled(motion.button)`
+  ${theme.CommonButton};
   ${(props) => {
     if (true) {
       return css`
-        width: 300px;
+        width: 100px;
       `;
     }
   }}
   &.active {
-    background-color: blue;
+    background-color: ${theme.color.red};
   }
   /* height: ${(props) => props.height};
-  transition: all 1s ease; */
+  transition: all 1s ea se; */
 `;
 
-const Wrapper = styled.div`
-  button {
-  }
-  form {
-  }
+const Wrapper = styled.li`
+  ${theme.flexCenter}
+  padding: 20px;
+  border-bottom: 1px solid ${theme.color.ec};
 `;

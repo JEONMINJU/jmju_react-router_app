@@ -1,5 +1,7 @@
 import React from "react";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
+import styled from "styled-components";
+import theme from "../../util/theme";
 
 export default function Header({ setTodos }) {
   // 전체선택
@@ -16,33 +18,41 @@ export default function Header({ setTodos }) {
 
   // 삭제
   const onDeleteAll = () => {
-    setLocalStorage('todo', []);
+    // setLocalStorage('todo', []);
     setTodos([]);
   };
 
   // 체크삭제
   const onDeleteChecked = () => {
-    const todosData = getLocalStorage('todo');
-    const setData = todosData.filter((item) => item.status !== "completed");
-
-    setTodos(setData);
-    setLocalStorage("todo",setData);
+    setTodos((prev) => prev.filter((item) => item.status !== "completed"));
+    // const todosData = getLocalStorage('todo');
+    // const setData = todosData.filter((item) => item.status !== "completed");
+    // setLocalStorage("todo",setData);
   };
 
   return (
-    <header>
-      <button type="button" onClick={onAllClick}>
-        all
-      </button>
-      <button type="button" onClick={onDeleteAll}>
-        전체삭제
-      </button>
-      <button type="button" onClick={onDeleteChecked}>
+    <TodoHeader>
+      <HeaderButton type="button" onClick={onAllClick}>
+        All
+      </HeaderButton>
+      <HeaderButton type="button" onClick={onDeleteAll}>
+        All delete
+      </HeaderButton>
+      <HeaderButton type="button" onClick={onDeleteChecked}>
         checked delete
-      </button>
+      </HeaderButton>
       {/* {filters.map((value, index) => (<li key={index}>
 				<button onClick={() => onFilterChange(value)}>{value}</button>
 			</li>))} */}
-    </header>
+    </TodoHeader>
   );
 }
+
+const TodoHeader = styled.header`
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+`
+const HeaderButton = styled.button`
+  ${theme.CommonButton};
+`

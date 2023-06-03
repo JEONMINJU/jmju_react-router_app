@@ -5,6 +5,7 @@ import './index.css';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { Reset }from 'styled-reset'
 
 // import "./styles.css";
 import reportWebVitals from './reportWebVitals';
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <Reset />
     {/* <AppProfile /> */}
     {/* <AppCounter /> */}
     {/* <AppProducts /> */}
