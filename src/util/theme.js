@@ -9,7 +9,7 @@ const color = {
   black:'#111',
   red:'#ff5500',
   111: '#111111',
-  ec: '#ececec,'
+  ec: '#ececec',
 }
 
 // 배경 컬러
@@ -23,6 +23,30 @@ const bg = {
 //   red:"#ff5500"
 // }
 
+// 말줄임 1줄
+const line1 = css`
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+`
+
+// 말줄임 2줄
+const line2 = css`
+-webkit-box-orient: vertical;
+display: block;
+display: -webkit-box;
+overflow: hidden;
+text-overflow: ellipsis;
+word-break: break-all;
+-webkit-line-clamp: 2;
+`
+
+const flexStart = css`
+display: flex;
+justify-content: flex-start;
+align-items: flex-start;
+`
+
 const flexCenter = css`
 display: flex;
 justify-content: center;
@@ -33,16 +57,24 @@ const CommonButton = css`
   min-width: 80px;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid ${color.black};
+  border: none;
+  /* border: 1px solid ${color.black}; */
   display: flex;
   justify-content: center;
   align-items: center;
 `
 
 const theme = {
+  flexStart,
   flexCenter,
+
+  line1,
+  line2,
+  
+  color,
+  bg,
+
   CommonButton,
-  color
 }
 
 

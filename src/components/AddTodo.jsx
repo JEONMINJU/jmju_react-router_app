@@ -36,11 +36,18 @@ export default function AddTodo({ onAdd }) {
 const AddForm = styled.form`
 ${theme.flexCenter};
   position: fixed;
-  bottom: 20px;
-  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  max-width: 100%;
   padding: 20px;
+  background: ${theme.bg.f5};
 `
 
 const AddInput = styled.input`
-  width: 200px;
+  width: 100%;
+  height: 40px;
+  border: 1px solid ${theme.color.ec};
+  border-radius: 8px;
 `

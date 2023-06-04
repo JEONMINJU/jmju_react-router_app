@@ -52,6 +52,7 @@ const TodoHeader = styled.header`
   display: flex;
   gap: 10px;
   padding: 20px;
+  box-shadow: 0 7px 10px 0px rgb(217,214,214, 0.3);
 `
 const HeaderButton = styled.button`
   ${theme.CommonButton};

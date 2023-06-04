@@ -80,30 +80,32 @@ export default function Todo({ todo, setTodos }) {
         )}
       </form>
 
-      <EditButton
-        animate={{
-          height: isEdit ? "100px" : "40px",
-          opacity: isEdit ? "1" : "0.3",
-          backgroundColor: isEdit && "blue",
-        }}
-        type="button"
-        onClick={handleEdit}
-      >
-        {isEdit ? "확인" : "수정"}
-      </EditButton>
-      <button type="button" onClick={handleDelete}>
-        <FaTrashAlt />
-      </button>
+      <TodoConrol>
+        <CommonButton
+          animate={{
+            height: isEdit ? "60px" : "",
+            opacity: isEdit ? "0.5" : "1",
+            // backgroundColor: isEdit && "blue",
+          }}
+          type="button"
+          onClick={handleEdit}
+        >
+          {isEdit ? "확인" : "수정"}
+        </CommonButton>
+        <CommonButton type="button" onClick={handleDelete}>
+          <FaTrashAlt />
+        </CommonButton>
+      </TodoConrol>
     </Wrapper>
   );
 }
 
-const EditButton = styled(motion.button)`
+const CommonButton = styled(motion.button)`
   ${theme.CommonButton};
   ${(props) => {
     if (true) {
       return css`
-        width: 100px;
+        min-width: 50px;
       `;
     }
   }}
@@ -116,6 +118,24 @@ const EditButton = styled(motion.button)`
 
 const Wrapper = styled.li`
   ${theme.flexCenter}
+  justify-content: space-between;
   padding: 20px;
   border-bottom: 1px solid ${theme.color.ec};
+
+  form {
+    ${theme.flexStart}
+  }
+
+  label {
+    display: block;
+    max-height: 30px;
+    ${theme.line2};
+  }
+`;
+
+const TodoConrol = styled.div`
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-left: 20px;
 `;
