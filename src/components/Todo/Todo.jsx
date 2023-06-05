@@ -5,6 +5,7 @@ import styled, { css } from "styled-components";
 import theme from "../../util/theme";
 import { motion } from "framer-motion";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
+import dayjs from 'dayjs';
 
 export default function Todo({ todo, setTodos }) {
   const { text, date, status, id } = todo;
@@ -35,10 +36,12 @@ export default function Todo({ todo, setTodos }) {
 
   const handleTextChange = (e) => {
     const value = e.target.value;
+    const date = dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss');
+
     setTodos((prev) =>
       prev.map((item) => {
         if (item.id === id) {
-          return { ...item, text: value };
+          return { ...item, date, text: value };
         } else {
           return item;
         }
