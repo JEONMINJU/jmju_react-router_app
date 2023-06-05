@@ -77,5 +77,4 @@ const theme = {
   CommonButton,
 }
 
-
-export default theme
+export default theme;

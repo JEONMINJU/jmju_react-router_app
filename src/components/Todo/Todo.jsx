@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 
 export default function Todo({ todo, setTodos }) {
-  const { text, status, id } = todo;
+  const { text, date, status, id } = todo;
   const [isEdit, setIsEdit] = useState(false);
 
   const handleChange = (e) => {
@@ -79,6 +79,8 @@ export default function Todo({ todo, setTodos }) {
           </>
         )}
       </form>
+
+      <span>{date}</span>
 
       <TodoConrol>
         <CommonButton

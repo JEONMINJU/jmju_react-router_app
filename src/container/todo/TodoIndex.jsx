@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import TodoList from "../../components/TodoList/TodoList";
-import { useSearchParams } from "react-router-dom";
-import TodoSwiper from "../../components/TodoSwiper/TodoSwiper";
+// import { useSearchParams } from "react-router-dom";
+// import TodoSwiper from "../../components/TodoSwiper/TodoSwiper";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import styled from "styled-components";
-
 
 function TodoIndex() {
   // let [searchParams] = useSearchParams();
