@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
+
+/* 라우터 */
+// import { useSearchParams } from "react-router-dom";
+
+/* 컴포넌트 */
 import Header from "../../components/Header/Header";
 import TodoList from "../../components/TodoList/TodoList";
-// import { useSearchParams } from "react-router-dom";
-// import TodoSwiper from "../../components/TodoSwiper/TodoSwiper";
-import { getLocalStorage, setLocalStorage } from "../../util/util";
+
+/* 스타일 */
 import styled from "styled-components";
+
+/* 로컬 저장 */
+import { getLocalStorage, setLocalStorage } from "../../util/util";
 
 function TodoIndex() {
   // let [searchParams] = useSearchParams();
@@ -12,20 +19,22 @@ function TodoIndex() {
   const [mount, setMount] = useState(false);
   const [todos, setTodos] = useState([]); // 상태관리
 
+  /* useEffect 
+    - 컴포넌트 부작용: 데이터 가져오기(비동기적), DOM을 직접 업데이트, 타이머 함수 발생
+  */
   useEffect(() => {
     setTodos(getLocalStorage("todo") || []);
     setMount(true);
-  }, []);
+  }, []); // 빈배열 사용은 첫번째 렌더링에서만 실행될 코드
 
   useEffect(() => {
     if (mount) {
       setLocalStorage("todo", todos);
     }
-  }, [todos,mount]);
+  }, [todos,mount]); // 값이 변경될 때마다 실행될 코드
 
   return (
     <TodoContainer>
-      {/* <TodoSwiper /> */}
       <Header setTodos={setTodos} />
       <TodoList todos={todos} setTodos={setTodos} />
     </TodoContainer>

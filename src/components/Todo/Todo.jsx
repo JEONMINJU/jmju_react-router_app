@@ -11,6 +11,7 @@ export default function Todo({ todo, setTodos }) {
   const { text, date, status, id } = todo;
   const [isEdit, setIsEdit] = useState(false);
 
+  //
   const handleChange = (e) => {
     const status = e.target.checked ? "completed" : "active";
     setTodos((prev) =>
@@ -23,6 +24,7 @@ export default function Todo({ todo, setTodos }) {
     // setLocalStorage("todo", setData);
   };
 
+  // 삭제
   const handleDelete = () => {
     const todosData = getLocalStorage("todo");
     setTodos((prev) => prev.filter((item) => item.id !== id));
@@ -30,10 +32,12 @@ export default function Todo({ todo, setTodos }) {
     // setLocalStorage("todo", setData);
   };
 
+  // 수정 버튼
   const handleEdit = () => {
     setIsEdit((prev) => !prev);
   };
 
+  // 텍스트 값 수정
   const handleTextChange = (e) => {
     const value = e.target.value;
     const date = dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss');
@@ -57,6 +61,7 @@ export default function Todo({ todo, setTodos }) {
     // });
     // setLocalStorage("todo", setData);
   };
+
 
   return (
     <Wrapper>
@@ -83,7 +88,7 @@ export default function Todo({ todo, setTodos }) {
         )}
       </form>
 
-      <span>{date}</span>
+      <TodoDate>{date}</TodoDate>
 
       <TodoConrol>
         <CommonButton
@@ -122,25 +127,38 @@ const CommonButton = styled(motion.button)`
 `;
 
 const Wrapper = styled.li`
-  ${theme.flexCenter}
+  /* ${theme.flexCenter} */
   justify-content: space-between;
   padding: 20px;
   border-bottom: 1px solid ${theme.color.ec};
 
   form {
-    ${theme.flexStart}
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: 200px;
+    padding: 16px;
+    background: ${theme.bg.f5};
+    border-radius: 6px;
   }
 
   label {
     display: block;
-    max-height: 30px;
-    ${theme.line2};
+    ${theme.line10};
   }
 `;
 
+// 날짜
+const TodoDate = styled.span`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+`
+
+// 버튼 컨트롤(수정,삭제)
 const TodoConrol = styled.div`
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    margin-left: 20px;
+    margin-top: 20px;
 `;

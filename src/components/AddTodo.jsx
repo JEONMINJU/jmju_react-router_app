@@ -8,9 +8,9 @@ import dayjs from 'dayjs';
 export default function AddTodo({ onAdd }) {
   const date = dayjs(new Date()).format('YYYY/MM/DD HH:mm:ss');
 
-  // onAdd 를 프롭으로 받고
-  const [text, setText] = useState(""); // 초기는 빈값으로
-  const handleChange = (e) => setText(e.target.value); // event가 발생하면 setText에 있는 타켓의 밸류로 설정할것
+  // onAdd 를 props로 받고
+  const [text, setText] = useState(""); // 초기 빈값
+  const handleChange = (e) => setText(e.target.value); // event가 발생하면 setText에 있는 타켓의 value로 설정할것
   const handleSubmit = (e) => {
     if (text.trim().length === 0) return;
     e.preventDefault(); // page refesh 막기
@@ -54,4 +54,5 @@ const AddInput = styled.input`
   height: 40px;
   border: 1px solid ${theme.color.ec};
   border-radius: 8px;
+  padding: 0 20px;
 `

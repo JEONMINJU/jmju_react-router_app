@@ -41,6 +41,17 @@ word-break: break-all;
 -webkit-line-clamp: 2;
 `
 
+// 말줄임 10줄
+const line10 = css`
+-webkit-box-orient: vertical;
+display: block;
+display: -webkit-box;
+overflow: hidden;
+text-overflow: ellipsis;
+word-break: break-all;
+-webkit-line-clamp: 10;
+`
+
 const flexStart = css`
 display: flex;
 justify-content: flex-start;
@@ -70,6 +81,7 @@ const theme = {
 
   line1,
   line2,
+  line10,
   
   color,
   bg,
