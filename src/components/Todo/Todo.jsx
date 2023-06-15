@@ -62,7 +62,6 @@ export default function Todo({ todo, setTodos }) {
     // setLocalStorage("todo", setData);
   };
 
-
   return (
     <Wrapper>
       <form className="form">
