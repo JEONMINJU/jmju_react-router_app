@@ -12,8 +12,11 @@ import styled from "styled-components";
 
 /* 로컬 저장 */
 import { getLocalStorage, setLocalStorage } from "../../util/util";
+import { ThemeContext } from "../../context/ThemeContext";
+
 
 function TodoIndex() {
+  const [isDark,setIsDark] = useState(false)
   // let [searchParams] = useSearchParams();
   // const todoIds = searchParams.get("id");
   const [mount, setMount] = useState(false);
@@ -31,17 +34,18 @@ function TodoIndex() {
     if (mount) {
       setLocalStorage("todo", todos);
     }
-  }, [todos,mount]); // 값이 변경될 때마다 실행될 코드
+  }, [todos, mount]); // 값이 변경될 때마다 실행될 코드
 
   return (
-    <TodoContainer>
-      <Header setTodos={setTodos} />
-      <TodoList todos={todos} setTodos={setTodos} />
-    </TodoContainer>
+    <ThemeContext.Provider value={{isDark,setIsDark}}>
+      <TodoContainer>
+        <Header setTodos={setTodos} />
+        <TodoList todos={todos} setTodos={setTodos} />
+      </TodoContainer>
+    </ThemeContext.Provider>
   );
 }
 
 export default TodoIndex;
 
-const TodoContainer = styled.div`
-`
+const TodoContainer = styled.div``;

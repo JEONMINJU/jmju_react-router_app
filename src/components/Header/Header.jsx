@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import theme from "../../util/theme";
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function Header({ setTodos }) {
+  const {isDark, setIsDark} = useContext(ThemeContext);
+  
+  console.log(isDark, "여기")
+
+  const toggleTheme = () =>{
+    setIsDark(prev=>!prev);
+    console.log(isDark, "123여기")
+  };
+
   // 전체선택
   const allChecked = () => {
     setTodos((todos) => {
@@ -30,7 +40,13 @@ export default function Header({ setTodos }) {
   };
 
   return (
-    <TodoHeader>
+    <TodoHeader style={{
+      backgroundColor: isDark? 'black' : 'white',
+      color: isDark ? 'white' : 'black',
+    }}>
+
+      <HeaderButton onClick={toggleTheme}>Toggle</HeaderButton>
+
       <HeaderButton type="button" onClick={allChecked}>
         All
       </HeaderButton>
