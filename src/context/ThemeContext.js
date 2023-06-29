@@ -1,18 +1,27 @@
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
-export const ThemeContext = createContext();
+const ThemeContext = createContext();
 
-// import { createContext, useContext, useState } from "react";
+export function ThemeProvider({ children }) {
+  const [isDark, setIsDark] = useState(false);
 
-// const ThemeContext = createContext();
+	const toggleDarkMode = () => {
+		setIsDark((prev) => !prev);
+		updateDarkMode(!isDark);
+	};
+  return (
+    <ThemeContext.Provider value={{ isDark, toggleDarkMode }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
 
-// export default function ThemeProvider({ children }) {
-//   const [isDark, setIsDark] = useState(false);
-//   return (
-//     <ThemeContext.Provider value={{ isDark, setIsDark }}>
-//       {children}
-//     </ThemeContext.Provider>
-//   );
-// }
+function updateDarkMode(isDark) {
+	if(isDark) {
+		document.documentElement.classList.add('onDarkMode');
+	} else {
+		document.documentElement.classList.remove('onDarkMode');
+	}
+}
 
-// export const useDarkMode = () => useContext(ThemeContext);
+export const useDarkMode = () => useContext(ThemeContext);

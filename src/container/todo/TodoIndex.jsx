@@ -12,11 +12,9 @@ import styled from "styled-components";
 
 /* 로컬 저장 */
 import { getLocalStorage, setLocalStorage } from "../../util/util";
-import { ThemeContext } from "../../context/ThemeContext";
-
+import { ThemeProvider } from "../../context/ThemeContext";
 
 function TodoIndex() {
-  const [isDark,setIsDark] = useState(false)
   // let [searchParams] = useSearchParams();
   // const todoIds = searchParams.get("id");
   const [mount, setMount] = useState(false);
@@ -37,12 +35,12 @@ function TodoIndex() {
   }, [todos, mount]); // 값이 변경될 때마다 실행될 코드
 
   return (
-    <ThemeContext.Provider value={{isDark,setIsDark}}>
+    <ThemeProvider>
       <TodoContainer>
         <Header setTodos={setTodos} />
         <TodoList todos={todos} setTodos={setTodos} />
       </TodoContainer>
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 }
 

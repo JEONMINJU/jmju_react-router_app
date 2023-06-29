@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import theme from "../../util/theme";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useDarkMode } from "../../context/ThemeContext";
 
 export default function Header({ setTodos }) {
-  const {isDark, setIsDark} = useContext(ThemeContext);
-  
-  console.log(isDark, "여기")
+  const {isDark, toggleDarkMode} = useDarkMode();
 
   const toggleTheme = () =>{
-    setIsDark(prev=>!prev);
+    toggleDarkMode(prev=>!prev);
     console.log(isDark, "123여기")
   };
 
@@ -44,7 +42,6 @@ export default function Header({ setTodos }) {
       backgroundColor: isDark? 'black' : 'white',
       color: isDark ? 'white' : 'black',
     }}>
-
       <HeaderButton onClick={toggleTheme}>Toggle</HeaderButton>
 
       <HeaderButton type="button" onClick={allChecked}>
