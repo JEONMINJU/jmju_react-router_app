@@ -11,6 +11,8 @@ import theme from "../../util/theme";
 /* 슬라이드 */
 import { Navigation, Pagination, Parallax } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
 
 export default function TodoList({ todos, setTodos }) {
   const handleAdd = (todo) => setTodos((prev) => [...prev, todo]); // 기존의 todos 배열에 todo 추가

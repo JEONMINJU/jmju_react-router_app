@@ -35,15 +35,15 @@ function TodoIndex() {
   }, [todos, mount]); // 값이 변경될 때마다 실행될 코드
 
   return (
-    <ThemeProvider>
-      <TodoContainer>
-        <Header setTodos={setTodos} />
-        <TodoList todos={todos} setTodos={setTodos} />
-      </TodoContainer>
-    </ThemeProvider>
+    <TodoContainer className="mj__app__container">
+      <ThemeProvider>
+          <Header setTodos={setTodos} />
+          <TodoList todos={todos} setTodos={setTodos} />
+      </ThemeProvider>
+    </TodoContainer>
   );
 }
 
-export default TodoIndex;
-
 const TodoContainer = styled.div``;
+
+export default TodoIndex;

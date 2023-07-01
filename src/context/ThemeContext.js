@@ -18,9 +18,11 @@ export function ThemeProvider({ children }) {
 
 function updateDarkMode(isDark) {
 	if(isDark) {
-		document.documentElement.classList.add('onDarkMode');
+		// document.documentElement.classList.add('onDarkMode');
+		document.getElementsByClassName("mj__app__container")[0].classList.add('onDarkMode');
 	} else {
-		document.documentElement.classList.remove('onDarkMode');
+		// document.documentElement.classList.remove('onDarkMode');
+		document.getElementsByClassName("mj__app__container")[0].classList.remove('onDarkMode');
 	}
 }
 

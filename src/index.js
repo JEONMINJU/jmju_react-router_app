@@ -29,6 +29,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import TodoIndex from './container/todo/TodoIndex';
+import Main from './container/main/Main';
 // import AppProfile from './AppProfile';
 // import AppCounter from './AppCounter';
 // import AppProducts from './AppProducts';
@@ -41,7 +42,7 @@ import TodoIndex from './container/todo/TodoIndex';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Main />,
   },
   {
     path: "/todos",
