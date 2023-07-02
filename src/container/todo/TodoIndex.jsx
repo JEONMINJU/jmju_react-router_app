@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { MdArrowForwardIos } from 'react-icons/md';
+
 
 /* 라우터 */
 // import { useSearchParams } from "react-router-dom";
@@ -13,6 +15,7 @@ import styled from "styled-components";
 /* 로컬 저장 */
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import { ThemeProvider } from "../../context/ThemeContext";
+import theme from "../../util/theme";
 
 function TodoIndex() {
   // let [searchParams] = useSearchParams();
@@ -44,6 +47,10 @@ function TodoIndex() {
   );
 }
 
-const TodoContainer = styled.div``;
+const TodoContainer = styled.div`
+  &.onDarkMode {
+    background-color: ${theme.color.black};
+  }
+`;
 
 export default TodoIndex;

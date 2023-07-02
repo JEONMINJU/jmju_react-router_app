@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../util/theme";
 import { useDarkMode } from "../../context/ThemeContext";
+import { Link } from "react-router-dom";
+import { MdArrowBackIos } from "react-icons/md";
+import { HiMoon, HiSun } from "react-icons/hi";
 
 export default function Header({ setTodos }) {
   const {isDark, toggleDarkMode} = useDarkMode();
@@ -42,7 +45,8 @@ export default function Header({ setTodos }) {
       backgroundColor: isDark? 'black' : 'white',
       color: isDark ? 'white' : 'black',
     }}>
-      <HeaderButton onClick={toggleTheme}>Toggle</HeaderButton>
+      {/* 뒤로가기 */}
+      <Link to="/"><MdArrowBackIos size={24} /></Link>
 
       <HeaderButton type="button" onClick={allChecked}>
         All
@@ -53,16 +57,30 @@ export default function Header({ setTodos }) {
       <HeaderButton type="button" onClick={onCheckedDelete}>
         checked delete
       </HeaderButton>
+
+      {/* 다크모드 토글 */}
+      <DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton>
     </TodoHeader>
   );
 }
 
 const TodoHeader = styled.header`
+  position: relative;
   display: flex;
+  align-items: center;
   gap: 10px;
   padding: 20px;
   box-shadow: 0 7px 10px 0px rgb(217,214,214, 0.3);
 `
 const HeaderButton = styled.button`
   ${theme.CommonButton};
+`
+
+const DarkModeButton = styled.button`
+  ${theme.CommonButton};
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  transform: translateY(-50%);
+  min-width: 40px;
 `
