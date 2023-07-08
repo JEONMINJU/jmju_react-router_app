@@ -75,6 +75,7 @@ const TodoHeader = styled.header`
 const HeaderButton = styled.button`
   ${theme.CommonButton};
 `
+
 const DarkModeButton = styled.button`
   ${theme.CommonButton};
   position: absolute;
@@ -82,5 +83,4 @@ const DarkModeButton = styled.button`
   right: 30px;
   transform: translateY(-50%);
   min-width: 40px;
-  cursor: pointer;
-`;
+`
