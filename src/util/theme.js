@@ -23,6 +23,10 @@ const bg = {
 //   red:"#ff5500"
 // }
 
+const hidden = css `
+	font-size: 0;
+`
+
 // 말줄임 1줄
 const line1 = css`
 white-space: nowrap;
@@ -87,6 +91,8 @@ const theme = {
   bg,
 
   CommonButton,
+
+  hidden,
 }
 
 export default theme;
