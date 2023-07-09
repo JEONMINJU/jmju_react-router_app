@@ -83,4 +83,5 @@ const DarkModeButton = styled.button`
   right: 30px;
   transform: translateY(-50%);
   min-width: 40px;
+  cursor: pointer; 
 `
