@@ -10,10 +10,6 @@ function Main() {
 			<Link to="/todos">
 				<button type="button">todo 작성페이지 이동</button>
 			</Link>
-
-			<Link to="/todos">
-				<button type="button">testttt</button>
-			</Link>
 		</MainContainer>
 	);
 };
