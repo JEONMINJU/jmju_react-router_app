@@ -8,12 +8,12 @@ function Main() {
 			<h2 className="mj__text__hidden">main</h2>
 
 			{/* 캘린더 */}
-			<Link to="/todos">
+			<Link to="/calendar">
 				<button type="button">CALENDAR</button>
 			</Link>
 
 			{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
-			<Link to="/todos">
+			<Link to="/work">
 				<button type="button">WORK</button>
 			</Link>
 

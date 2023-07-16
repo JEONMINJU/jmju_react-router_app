@@ -30,6 +30,8 @@ import {
 } from "react-router-dom";
 import TodoIndex from './container/todo/TodoIndex';
 import Main from './container/main/Main';
+import CalendarIndex from './container/calendar/CalendarIndex';
+import WorkIndex from './container/work/WorkIndex';
 // import AppProfile from './AppProfile';
 // import AppCounter from './AppCounter';
 // import AppProducts from './AppProducts';
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+  },
+  {
+    path: "/calendar",
+    element: <CalendarIndex />,
+  },
+  {
+    path: "/work",
+    element: <WorkIndex />,
   },
   {
     path: "/todos",

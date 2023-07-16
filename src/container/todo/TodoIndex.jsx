@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdArrowForwardIos } from 'react-icons/md';
 
-
 /* 라우터 */
 // import { useSearchParams } from "react-router-dom";
 
