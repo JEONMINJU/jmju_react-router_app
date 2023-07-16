@@ -12,7 +12,7 @@ function Main() {
 			</Link>
 
 			<Link to="/todos">
-				<button type="button">test</button>
+				<button type="button">testttt</button>
 			</Link>
 		</MainContainer>
 	);
