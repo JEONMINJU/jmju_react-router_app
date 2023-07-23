@@ -1,6 +1,12 @@
 import styled, { css } from "styled-components";
 
-// 포인트 컬러
+// #region 숨김처리
+const hidden = css `
+	font-size: 0;
+`
+// #endregion
+
+// #region 컬러
 const point = {
   
 }
@@ -22,7 +28,9 @@ const bg = {
 //   black:"#262626",
 //   red:"#ff5500"
 // }
+// #endregion
 
+// #region 말줄임
 // 말줄임 1줄
 const line1 = css`
 white-space: nowrap;
@@ -51,7 +59,9 @@ text-overflow: ellipsis;
 word-break: break-all;
 -webkit-line-clamp: 10;
 `
+// #endregion
 
+// #region 정렬(flex)
 const flexStart = css`
 display: flex;
 justify-content: flex-start;
@@ -63,7 +73,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
+// #endregion
 
+// #region 공통 버튼
 const CommonButton = css`
   min-width: 80px;
   padding: 8px;
@@ -74,8 +86,11 @@ const CommonButton = css`
   justify-content: center;
   align-items: center;
 `
+// #endregion
 
 const theme = {
+  hidden,
+
   flexStart,
   flexCenter,
 
