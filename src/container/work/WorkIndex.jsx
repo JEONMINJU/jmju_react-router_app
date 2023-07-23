@@ -8,7 +8,7 @@ import { getLocalStorage, setLocalStorage } from "../../util/util";
 // 업무리스트 페이지
 function WorkIndex() {
 	const [mount, setMount] = useState(false);
-	const [lists, setLists] = useState([]); // 상태관리
+	const [lists, setLists] = useState([]);
 
 	useEffect(() => {
 		setLists(getLocalStorage('workList') || []); // 로드시 불러오기
@@ -32,6 +32,9 @@ function WorkIndex() {
 			<CommonHeader />
 			<WorkIndexSection>
 				<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
+
+				{/* 할일 개수 */}
+				<span className="mj__work__total">할일 : {lists.length} 개</span>
 
 				<ul className="mj__work__box">
 					{lists.map((item) => (
@@ -57,6 +60,12 @@ const WorkIndexSection = styled.section`
 		&__work {
 			&__title {
 				font-size: 13px;
+			}
+
+			&__total {
+				display: block;
+				margin-top: 10px;
+				font-size: 12px;
 			}
 
 			&__box {
