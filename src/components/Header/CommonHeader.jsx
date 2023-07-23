@@ -16,6 +16,7 @@ export default function CommonHeader() {
 const CommonHeaderSection = styled.section`
 	padding: 20px;
 	background: transparent;
+	border-bottom: 1px solid ${theme.color.ec};
 `
 
 const BackLink = styled(Link)`
