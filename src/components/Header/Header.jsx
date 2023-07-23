@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import theme from "../../util/theme";
 import { useDarkMode } from "../../context/ThemeContext";
-import { Link } from "react-router-dom";
-import { MdArrowBackIos } from "react-icons/md";
 import { HiMoon, HiSun } from "react-icons/hi";
 
 export default function Header({ setTodos }) {
@@ -45,9 +43,6 @@ export default function Header({ setTodos }) {
       backgroundColor: isDark? 'black' : 'white',
       color: isDark ? 'white' : 'black',
     }}>
-      {/* 뒤로가기 */}
-      <Link to="/"><MdArrowBackIos size={24} /></Link>
-
       <HeaderButton type="button" onClick={allChecked}>
         All
       </HeaderButton>

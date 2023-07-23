@@ -15,6 +15,7 @@ import styled from "styled-components";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import { ThemeProvider } from "../../context/ThemeContext";
 import theme from "../../util/theme";
+import CommonHeader from "../../components/Header/CommonHeader";
 
 function TodoIndex() {
   // let [searchParams] = useSearchParams();
@@ -39,6 +40,7 @@ function TodoIndex() {
   return (
     <TodoContainer className="mj__app__container">
       <ThemeProvider>
+          <CommonHeader/>
           <Header setTodos={setTodos} />
           <TodoList todos={todos} setTodos={setTodos} />
       </ThemeProvider>
