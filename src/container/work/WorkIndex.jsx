@@ -4,6 +4,8 @@ import styled from "styled-components";
 import CommonHeader from "../../components/Header/CommonHeader";
 import theme from "../../util/theme";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
+import { FaTrashAlt } from "react-icons/fa";
+import ListTextType from "../../components/List/ListTextType";
 
 // 업무리스트 페이지
 function WorkIndex() {
@@ -21,9 +23,7 @@ function WorkIndex() {
 		}
 	}, [lists, mount]);
 
-
 	const handleAdd = (newList) => {
-		console.log(newList, )
 		setLists([...lists, newList])
 	};
 
@@ -35,18 +35,8 @@ function WorkIndex() {
 
 				{/* 할일 개수 */}
 				<span className="mj__work__total">할일 : {lists.length} 개</span>
-
-				<ul className="mj__work__box">
-					{lists.map((item) => (
-						<li className="mj__work__list" key={item.id}>
-							<form className="mj__work__form">
-								<input type="checkbox" className="mj__work__checkbox" />
-							</form>
-							{item.inputText}
-						</li>
-					))}
-				</ul>
-
+				
+				<ListTextType key={lists.id} lists={lists} setLists={setLists}/>
 				<AddList onAdd={handleAdd} />
 			</WorkIndexSection>
 		</>
@@ -54,6 +44,10 @@ function WorkIndex() {
 }
 
 const WorkIndexSection = styled.section`
+	.mj__title__hidden {
+		${theme.hidden};
+	}
+
 	padding: 20px;
 
 	.mj {
@@ -75,6 +69,7 @@ const WorkIndexSection = styled.section`
 			}
 
 			&__list {
+				position: relative;
 				${theme.flexStart};
 				padding: 20px 16px;
 
@@ -92,6 +87,17 @@ const WorkIndexSection = styled.section`
 				height: 16px;
 				border: 1px solid ${theme.color.ec};
 				margin: 0 10px 0 0;
+			}
+
+			&__delete {
+				position: absolute;
+				right: 16px;
+				cursor: pointer;
+
+				/* reset 고민 */
+				background: none;
+				border: none;
+				padding: 0;
 			}
 		}
 	}
