@@ -1,5 +1,6 @@
+// 가져오기
 export const getLocalStorage = (key) => {
-	return JSON.parse(window.localStorage.getItem(key));
+	return key ? JSON.parse(window.localStorage.getItem(key)) : [];
 }
 
 // 저장
