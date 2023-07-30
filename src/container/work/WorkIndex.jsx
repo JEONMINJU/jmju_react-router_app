@@ -10,7 +10,7 @@ import ListTextType from "../../components/List/ListTextType";
 // 업무리스트 페이지
 function WorkIndex() {
 	const [mount, setMount] = useState(false);
-	const [lists, setLists] = useState([]);
+	const [list, setLists] = useState([]);
 
 	useEffect(() => {
 		setLists(getLocalStorage('workList') || []); // 로드시 불러오기
@@ -19,13 +19,11 @@ function WorkIndex() {
 
 	useEffect(() => {
 		if (mount) {
-			setLocalStorage('workList', lists); // 저장
+			setLocalStorage('workList', list);
 		}
-	}, [lists, mount]);
+	}, [list, mount]);
 
-	const handleAdd = (newList) => {
-		setLists([...lists, newList])
-	};
+	const handleAdd = (list) => setLists((prev)=>prev.concat(list));
 
 	return (
 		<>
@@ -34,9 +32,10 @@ function WorkIndex() {
 				<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
 
 				{/* 할일 개수 */}
-				<span className="mj__work__total">할일 : {lists.length} 개</span>
+				<span className="mj__work__total">할일 : {list.length}개</span>
+
+				{list && <ListTextType list={list} setLists={setLists} />}	
 				
-				<ListTextType key={lists.id} lists={lists} setLists={setLists}/>
 				<AddList onAdd={handleAdd} />
 			</WorkIndexSection>
 		</>

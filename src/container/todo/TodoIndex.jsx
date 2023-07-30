@@ -39,11 +39,11 @@ function TodoIndex() {
 
   return (
     <TodoContainer className="mj__app__container">
-      <ThemeProvider>
+      {/* <ThemeProvider> */}
           <CommonHeader/>
           <Header setTodos={setTodos} />
           <TodoList todos={todos} setTodos={setTodos} />
-      </ThemeProvider>
+      {/* </ThemeProvider> */}
     </TodoContainer>
   );
 }

@@ -3,16 +3,30 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import dayjs from 'dayjs';
 import theme from "../../util/theme";
+import { useDarkMode } from "../../context/ThemeContext";
+import { HiMoon, HiSun } from "react-icons/hi";
 
 function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
+	const {isDark, toggleDarkMode} = useDarkMode();
+
+  const toggleTheme = () =>{
+    toggleDarkMode(prev=>!prev);
+    console.log(isDark, "123여기")
+  };
 
 	return (
-		<MainContainer>
+		<MainContainer 	style={{
+			// backgroundColor: isDark? 'black' : 'white',
+			// color: isDark ? 'white' : 'black',
+		}}>
 			<h2 className="mj__text__hidden">main</h2>
 			<nav className="mj__main__nav">
 				<button type="button" className="nav__menu">메뉴</button>
 				<span className="nav__date">{date}</span>
+
+				{/* 다크모드 토글 */}
+				<DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton>
 			</nav>
 
 			<figure className="mj__main__banner">
@@ -45,6 +59,8 @@ function Main() {
 export default Main;
 
 const MainContainer = styled.section`
+	background: red;
+
 	.mj__text__hidden {
 		font-size: 0;
 	}
@@ -52,6 +68,7 @@ const MainContainer = styled.section`
 	.mj {
 		&__main {
 			&__nav {
+				position: relative;
 				padding: 20px;
 
 				.nav {
@@ -100,4 +117,12 @@ const MainContainer = styled.section`
 
 	background: #ccc;
 `
-
+const DarkModeButton = styled.button`
+  ${theme.CommonButton};
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  min-width: 40px;
+  cursor: pointer; 
+`
