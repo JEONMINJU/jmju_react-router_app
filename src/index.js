@@ -32,6 +32,7 @@ import TodoIndex from './container/todo/TodoIndex';
 import Main from './container/main/Main';
 import CalendarIndex from './container/calendar/CalendarIndex';
 import WorkIndex from './container/work/WorkIndex';
+import { ThemeProvider } from './context/ThemeContext';
 // import AppProfile from './AppProfile';
 // import AppCounter from './AppCounter';
 // import AppProducts from './AppProducts';
@@ -72,7 +73,9 @@ root.render(
     {/* <AppWrap /> 컴포넌트 재사용 */}
     {/* <AppCard /> */}
     {/* <App/> */}
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

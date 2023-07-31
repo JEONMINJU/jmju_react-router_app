@@ -9,9 +9,11 @@ import dayjs from 'dayjs';
 
 export default function Todo({ todo, setTodos }) {
   const { text, date, status, id } = todo;
+
+  console.log(id, text, status)
+  
   const [isEdit, setIsEdit] = useState(false);
 
-  //
   const handleChange = (e) => {
     const status = e.target.checked ? "completed" : "active";
     setTodos((prev) =>
@@ -28,6 +30,7 @@ export default function Todo({ todo, setTodos }) {
   const handleDelete = () => {
     const todosData = getLocalStorage("todo");
     setTodos((prev) => prev.filter((item) => item.id !== id));
+    console.log(setTodos, "1")
     // const setData = todosData.filter((item) => item.id !== id);
     // setLocalStorage("todo", setData);
   };

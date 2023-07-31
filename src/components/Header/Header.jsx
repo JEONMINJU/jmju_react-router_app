@@ -5,12 +5,12 @@ import { useDarkMode } from "../../context/ThemeContext";
 import { HiMoon, HiSun } from "react-icons/hi";
 
 export default function Header({ setTodos }) {
-  const {isDark, toggleDarkMode} = useDarkMode();
+  // const {isDark, toggleDarkMode} = useDarkMode();
 
-  const toggleTheme = () =>{
-    toggleDarkMode(prev=>!prev);
-    console.log(isDark, "123여기")
-  };
+  // const toggleTheme = () =>{
+  //   toggleDarkMode(prev=>!prev);
+  //   console.log(isDark, "123여기")
+  // };
 
   // 전체선택
   const allChecked = () => {
@@ -39,10 +39,7 @@ export default function Header({ setTodos }) {
   };
 
   return (
-    <TodoHeader style={{
-      backgroundColor: isDark? 'black' : 'white',
-      color: isDark ? 'white' : 'black',
-    }}>
+    <TodoHeader>
       <HeaderButton type="button" onClick={allChecked}>
         All
       </HeaderButton>
@@ -54,7 +51,7 @@ export default function Header({ setTodos }) {
       </HeaderButton>
 
       {/* 다크모드 토글 */}
-      <DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton>
+      {/* <DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton> */}
     </TodoHeader>
   );
 }
@@ -71,12 +68,12 @@ const HeaderButton = styled.button`
   ${theme.CommonButton};
 `
 
-const DarkModeButton = styled.button`
-  ${theme.CommonButton};
-  position: absolute;
-  top: 50%;
-  right: 30px;
-  transform: translateY(-50%);
-  min-width: 40px;
-  cursor: pointer; 
-`
+// const DarkModeButton = styled.button`
+//   ${theme.CommonButton};
+//   position: absolute;
+//   top: 50%;
+//   right: 30px;
+//   transform: translateY(-50%);
+//   min-width: 40px;
+//   cursor: pointer; 
+// `

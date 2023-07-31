@@ -2,51 +2,43 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import theme from "../../util/theme";
+import { getLocalStorage, setLocalStorage } from "../../util/util";
 
 export default function AddList({ onAdd }) {
 	const [inputText, setInputText] = useState('');
-
 	const onChange = (e) => {setInputText(e.target.value);}
-
-	const handleAddList = () => {
+	const onSubmit = (e) => {
 		if (inputText === '') {
 			alert("텍스트를 입력해주세요.");
-
 			return false;
 		}
-
+		e.preventDefault();
 		onAdd({id: uuidv4(), inputText: inputText, status: 'active'});
+		const storageTodos = getLocalStorage("workList") || [];
+
+    setLocalStorage("workList", [
+      ...storageTodos,
+      { id: uuidv4(), inputText: inputText, status: "active" },
+    ]);
 
 		setInputText('');
-	}
-
-	const onClick = (e) => {
-		e.preventDefault();
-		
-		handleAddList();
-	}
-
-	const onSubmit = (e) => {
-		e.preventDefault();
-
-		handleAddList();
 	}
 
 	return (
 		<AddListForm>
 			<h2 className="mj__title__hidden">업무리스트 입력 폼</h2>
-			
-			{/* form */}
-			<form className="mj__addList__form" onSubmit={onSubmit}>
-			<input 
-				className="mj__addList__input"
-				type="text" 
-				placeholder="오늘의 업무를 입력하세요."
-				value={inputText} 
-				onChange={onChange} 
-			/>
-			</form>
-			<button className="mj__addList__button" type="button" onClick={onClick}>추가</button>
+
+			<div className="mj__addList__wrapper">
+				<form className="mj__addList__form" onSubmit={onSubmit}>
+				<input 
+					className="mj__addList__input"
+					type="text" 
+					placeholder="오늘의 업무를 입력하세요."
+					value={inputText} 
+					onChange={onChange} 
+				/>
+				</form>
+			</div>
 		</AddListForm>
 	)
 };
@@ -62,15 +54,39 @@ const AddListForm = styled.section`
 		}
 
 		&__addList {
+			&__wrapper {
+				${theme.flexCenter};
+				justify-content: space-between;
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 1;
+				max-width: 100%;
+				padding: 20px;
+				background: ${theme.bg.f5};
+			}
+
 			&__form {
+				width: 90%;
 			}
 
 			&__input {
 				width: 100%;
+				height: 40px;
+				border: 1px solid ${theme.color.ec};
+				border-radius: 8px;
+				padding: 0 20px;
 			}
 
 			&__button {
-
+				width: 40px;
+				height: 40px;
+				margin-left: 10px;
+				background: ${theme.color.grey};
+				border-radius: 50%;
+				border: 1px solid ${theme.color.black};
+				cursor: pointer;
 			}
 		}
 	}
