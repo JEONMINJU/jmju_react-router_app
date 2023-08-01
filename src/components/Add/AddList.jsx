@@ -6,13 +6,15 @@ import { getLocalStorage, setLocalStorage } from "../../util/util";
 
 export default function AddList({ onAdd }) {
 	const [inputText, setInputText] = useState('');
+
 	const onChange = (e) => {setInputText(e.target.value);}
-	const onSubmit = (e) => {
+
+	const handleAdd = () => {
 		if (inputText === '') {
 			alert("텍스트를 입력해주세요.");
 			return false;
 		}
-		e.preventDefault();
+		
 		onAdd({id: uuidv4(), inputText: inputText, status: 'active'});
 		const storageTodos = getLocalStorage("workList") || [];
 
@@ -22,7 +24,17 @@ export default function AddList({ onAdd }) {
     ]);
 
 		setInputText('');
-	}
+	};
+
+	const onSubmit = (e) => {
+		e.preventDefault();
+		handleAdd();
+	};
+
+	const onClick = (e) => {
+		e.preventDefault();
+		handleAdd();
+	};
 
 	return (
 		<AddListForm>
@@ -38,6 +50,8 @@ export default function AddList({ onAdd }) {
 					onChange={onChange} 
 				/>
 				</form>
+
+				<button type="button" className="mj__addList__button" onClick={onClick}>추가</button>
 			</div>
 		</AddListForm>
 	)
@@ -68,7 +82,7 @@ const AddListForm = styled.section`
 			}
 
 			&__form {
-				width: 90%;
+				width: 77%;
 			}
 
 			&__input {

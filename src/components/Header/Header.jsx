@@ -1,17 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import theme from "../../util/theme";
-import { useDarkMode } from "../../context/ThemeContext";
-import { HiMoon, HiSun } from "react-icons/hi";
 
 export default function Header({ setTodos }) {
-  // const {isDark, toggleDarkMode} = useDarkMode();
-
-  // const toggleTheme = () =>{
-  //   toggleDarkMode(prev=>!prev);
-  //   console.log(isDark, "123여기")
-  // };
-
   // 전체선택
   const allChecked = () => {
     setTodos((todos) => {
@@ -49,9 +40,6 @@ export default function Header({ setTodos }) {
       <HeaderButton type="button" onClick={onCheckedDelete}>
         checked delete
       </HeaderButton>
-
-      {/* 다크모드 토글 */}
-      {/* <DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton> */}
     </TodoHeader>
   );
 }
@@ -67,13 +55,3 @@ const TodoHeader = styled.header`
 const HeaderButton = styled.button`
   ${theme.CommonButton};
 `
-
-// const DarkModeButton = styled.button`
-//   ${theme.CommonButton};
-//   position: absolute;
-//   top: 50%;
-//   right: 30px;
-//   transform: translateY(-50%);
-//   min-width: 40px;
-//   cursor: pointer; 
-// `

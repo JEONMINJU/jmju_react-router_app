@@ -40,7 +40,7 @@ function TodoIndex() {
   return (
     <TodoContainer className="mj__app__container">
       {/* <ThemeProvider> */}
-          <CommonHeader/>
+          <CommonHeader title = 'Note & Issue'/>
           <Header setTodos={setTodos} />
           <TodoList todos={todos} setTodos={setTodos} />
       {/* </ThemeProvider> */}

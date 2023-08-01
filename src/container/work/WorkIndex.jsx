@@ -6,6 +6,7 @@ import theme from "../../util/theme";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import { FaTrashAlt } from "react-icons/fa";
 import ListTextType from "../../components/List/ListTextType";
+import Header from "../../components/Header/Header";
 
 // 업무리스트 페이지
 function WorkIndex() {
@@ -23,13 +24,22 @@ function WorkIndex() {
 		}
 	}, [list, mount]);
 
+	/* 추가 */
 	const handleAdd = (list) => setLists((prev)=>prev.concat(list));
+	
+	/* 전체삭제 */
+	const handleDeleteAll = () => {
+		setLists([]);
+	};
 
 	return (
 		<>
-			<CommonHeader />
+			<CommonHeader title = 'Work List' />
 			<WorkIndexSection>
-				<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
+				<div className="mj__work__top">
+					<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
+					<button type="button" onClick={handleDeleteAll}>전체삭제</button>
+				</div>
 
 				{/* 할일 개수 */}
 				<span className="mj__work__total">할일 : {list.length}개</span>
@@ -51,6 +61,11 @@ const WorkIndexSection = styled.section`
 
 	.mj {
 		&__work {
+			&__top {
+				${theme.flexCenter};
+				justify-content: space-between;
+			}
+
 			&__title {
 				font-size: 13px;
 			}
@@ -77,16 +92,7 @@ const WorkIndexSection = styled.section`
 				}
 			}
 
-			&__form {
 
-			}
-
-			&__checkbox {
-				width: 16px;
-				height: 16px;
-				border: 1px solid ${theme.color.ec};
-				margin: 0 10px 0 0;
-			}
 
 			&__delete {
 				position: absolute;
