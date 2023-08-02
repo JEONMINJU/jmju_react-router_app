@@ -67,3 +67,11 @@
     transform: rotate(360deg);
   }
 }
+
+.onDarkMode {
+  background-color: black;
+
+  .mj__main__wrapper {
+    background-color: black !important;
+  }
+}

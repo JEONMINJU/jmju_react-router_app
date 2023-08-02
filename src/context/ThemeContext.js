@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import '../App.css';
 
 const ThemeContext = createContext();
 
@@ -18,11 +19,10 @@ export function ThemeProvider({ children }) {
 
 function updateDarkMode(isDark) {
 	if(isDark) {
-		// document.documentElement.classList.add('onDarkMode');
-		// document.getElementsByClassName("mj__app__container")[0].classList.add('onDarkMode');
+		console.log("dark-mode");
+		document.getElementsByTagName("html")[0].classList.add('onDarkMode');
 	} else {
-		// document.documentElement.classList.remove('onDarkMode');
-		// document.getElementsByClassName("mj__app__container")[0].classList.remove('onDarkMode');
+		document.getElementsByTagName("html")[0].classList.remove('onDarkMode');
 	}
 }
 

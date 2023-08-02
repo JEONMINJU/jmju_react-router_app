@@ -12,7 +12,6 @@ function Main() {
 
   const toggleTheme = () =>{
     toggleDarkMode(prev=>!prev);
-    console.log(isDark, "123여기")
   };
 
 	return (
@@ -59,8 +58,6 @@ function Main() {
 export default Main;
 
 const MainContainer = styled.section`
-	background: red;
-
 	.mj__text__hidden {
 		font-size: 0;
 	}
@@ -114,8 +111,6 @@ const MainContainer = styled.section`
 			}
 		}
 	}
-
-	background: #ccc;
 `
 const DarkModeButton = styled.button`
   ${theme.CommonButton};
