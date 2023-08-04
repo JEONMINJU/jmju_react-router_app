@@ -18,7 +18,6 @@ export default function TodoList({ todos, setTodos }) {
   const handleAdd = (todo) => setTodos((prev) => [...prev, todo]); // 기존의 todos 배열에 todo 추가
   // const handleAdd = (todo) => setTodos((prev)=>prev.concat(todo));
 
-  console.log("자식" ,todos)
   return (
     <Container>
       <Swiper

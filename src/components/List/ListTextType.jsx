@@ -8,14 +8,29 @@ function ListTextType({list, setLists}) {
     setLists((prev) => prev.filter((item) => item.id !== id))
   }
 
+  const handleChange = (e) => {
+    // input id 값 필수로 넣어줘야 e.target.id 가 찍힘
+    const status = e.target.checked ? 'completed' : 'active';
+
+    setLists((prev) =>
+      prev.map((item) => (item.id === e.target.id ? { ...item, status } : item))
+    );
+  }
+
   return (
     <List>
       <ul className="mj__work__box">
         {list.map((item) => (
           <li className="mj__work__list" key={item.id}>
             <form className="mj__work__form">
-              <input type="checkbox" className="mj__work__checkbox" />
-              <label className="mj__work__label">{item.inputText}</label>
+              <input 
+                type="checkbox"
+                id={item.id}
+                checked={item.status === 'completed'}
+                className="mj__work__checkbox"
+                onChange={handleChange}
+              />
+              <label htmlFor={item} className="mj__work__label">{item.inputText}</label>
             </form>
             <button type="button" className="mj__work__delete" onClick={()=>handleDelete(item.id)}>
               <span className="mj__title__hidden">삭제</span>

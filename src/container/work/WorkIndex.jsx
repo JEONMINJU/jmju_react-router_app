@@ -32,6 +32,13 @@ function WorkIndex() {
 		setLists([]);
 	};
 
+	/* 선택삭제 */
+	const onCheckedDelete = () => {
+    setLists((prev) => prev.filter((item) => {
+			return item.status !== "completed"
+		}));
+  };
+
 	return (
 		<>
 			<CommonHeader title = 'Work List' />
@@ -39,6 +46,8 @@ function WorkIndex() {
 				<div className="mj__work__top">
 					<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
 					<button type="button" onClick={handleDeleteAll}>전체삭제</button>
+
+					<button type="button" onClick={onCheckedDelete}>chose삭제</button>
 				</div>
 
 				{/* 할일 개수 */}
