@@ -37,10 +37,6 @@ import { ThemeProvider } from './context/ThemeContext';
 // import AppCounter from './AppCounter';
 // import AppProducts from './AppProducts';
 // import AppXY from './AppXY';
-// import AppMentor from './AppMentor';
-// import AppMentors from './AppMentors';
-// import AppWrap from './AppWrap';
-// import AppCard from './components/AppCard';
 // import App from './App';
 const router = createBrowserRouter([
   {
