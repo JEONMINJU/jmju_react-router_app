@@ -12,6 +12,7 @@ function ListTextType({list, setLists}) {
     // input id 값 필수로 넣어줘야 e.target.id 가 찍힘
     const status = e.target.checked ? 'completed' : 'active';
 
+    // 여기서 네이밍을 item이 아니라 list로 준다 ? 상위 ListTextType 내려받는 list 바라봄 
     setLists((prev) =>
       prev.map((item) => (item.id === e.target.id ? { ...item, status } : item))
     );

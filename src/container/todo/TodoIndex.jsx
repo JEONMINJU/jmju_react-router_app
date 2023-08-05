@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { MdArrowForwardIos } from 'react-icons/md';
 
 /* 라우터 */
 // import { useSearchParams } from "react-router-dom";
 
 /* 컴포넌트 */
-import Header from "../../components/Header/Header";
 import TodoList from "../../components/TodoList/TodoList";
 
 /* 스타일 */
@@ -13,7 +11,6 @@ import styled from "styled-components";
 
 /* 로컬 저장 */
 import { getLocalStorage, setLocalStorage } from "../../util/util";
-import { ThemeProvider } from "../../context/ThemeContext";
 import theme from "../../util/theme";
 import CommonHeader from "../../components/Header/CommonHeader";
 
@@ -39,19 +36,14 @@ function TodoIndex() {
 
   return (
     <TodoContainer className="mj__app__container">
-      {/* <ThemeProvider> */}
-          <CommonHeader title = 'Note & Issue'/>
-          <Header setTodos={setTodos} />
-          <TodoList todos={todos} setTodos={setTodos} />
-      {/* </ThemeProvider> */}
+      <CommonHeader title = 'Note & Issue'/>
+      <TodoList todos={todos} setTodos={setTodos} />
     </TodoContainer>
   );
 }
 
 const TodoContainer = styled.div`
-  &.onDarkMode {
-    background-color: ${theme.color.black};
-  }
+
 `;
 
 export default TodoIndex;
