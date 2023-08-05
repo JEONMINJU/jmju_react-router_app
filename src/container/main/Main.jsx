@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import dayjs from 'dayjs';
@@ -10,47 +10,60 @@ function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
 	const {isDark, toggleDarkMode} = useDarkMode();
 
+	// const [x, setX] = useState(0);
+	// const [y, setY] = useState(0);
+	const [position, setPosition] = useState({x:0, y:0, z:0});
+
   const toggleTheme = () =>{
     toggleDarkMode(prev=>!prev);
   };
 
+	// style={{
+		// backgroundColor: isDark? 'black' : 'white',
+		// color: isDark ? 'white' : 'black',
+	// }}>
+
 	return (
-		<MainContainer 	style={{
-			// backgroundColor: isDark? 'black' : 'white',
-			// color: isDark ? 'white' : 'black',
+		<MainContainer 	onPointerMove={(e) => {
+			console.log(e.clientX, e.clientY);
+			// setX(e.clientX);
+			// setY(e.clientY);
+			// setPosition((prev) => ({...prev, x:e.clientX}));
+			setPosition({y:e.clientY, x:e.clientX});
 		}}>
-			<h2 className="mj__text__hidden">main</h2>
-			<nav className="mj__main__nav">
-				<button type="button" className="nav__menu">메뉴</button>
-				<span className="nav__date">{date}</span>
+				<div className="pointer" style={{transform:`translate(${position.x}px, ${position.y}px)`}}></div>
 
-				{/* 다크모드 토글 */}
-				<DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton>
-			</nav>
+				<h2 className="mj__text__hidden">main</h2>
+				<nav className="mj__main__nav">
+					<button type="button" className="nav__menu">메뉴</button>
+					<span className="nav__date">{date}</span>
 
-			<figure className="mj__main__banner">
-				<img src="" alt="" />
-			</figure>
+					{/* 다크모드 토글 */}
+					<DarkModeButton onClick={toggleTheme}>{!isDark ? <HiMoon /> : <HiSun />}</DarkModeButton>
+				</nav>
 
-			<div className="mj__main__wrapper">
-				<h3 className="mj__main__title">매일의 기록 ☺</h3>
+				<figure className="mj__main__banner">
+					<img src="" alt="" />
+				</figure>
 
-				{/* 캘린더 */}
-				<Link to="/calendar">
-					<button type="button" className="mj__main__direct">CALENDAR</button>
-				</Link>
+				<div className="mj__main__wrapper">
+					<h3 className="mj__main__title">매일의 기록 ☺</h3>
 
-				{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
-				<Link to="/work">
-					<button type="button" className="mj__main__direct">WORK</button>
-				</Link>
+					{/* 캘린더 */}
+					<Link to="/calendar">
+						<button type="button" className="mj__main__direct">CALENDAR</button>
+					</Link>
 
-				{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
-				<Link to="/todos">
-					<button type="button" className="mj__main__direct">ISSUE</button>
-				</Link>
-			</div>
+					{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
+					<Link to="/work">
+						<button type="button" className="mj__main__direct">WORK</button>
+					</Link>
 
+					{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
+					<Link to="/todos">
+						<button type="button" className="mj__main__direct">ISSUE</button>
+					</Link>
+				</div>
 		</MainContainer>
 	);
 };
@@ -58,6 +71,9 @@ function Main() {
 export default Main;
 
 const MainContainer = styled.section`
+	width: 100%;
+	height: 100vh;
+	
 	.mj__text__hidden {
 		font-size: 0;
 	}
@@ -110,6 +126,17 @@ const MainContainer = styled.section`
 				cursor: pointer;
 			}
 		}
+	}
+
+	.pointer {
+		position: absolute;
+		left: -30px;
+		top: -30px;
+		z-index: 10;
+		width: 30px;
+		height: 30px;
+		background-color: #2cb48e;
+		border-radius: 50%;
 	}
 `
 const DarkModeButton = styled.button`

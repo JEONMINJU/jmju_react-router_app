@@ -21,7 +21,6 @@ import dayjs from 'dayjs';
 // dayjs.extend(relativeTime);
 // dayjs.locale("ko");
 
-
 // import "./styles.css";
 import reportWebVitals from './reportWebVitals';
 import {
@@ -33,10 +32,7 @@ import Main from './container/main/Main';
 import CalendarIndex from './container/calendar/CalendarIndex';
 import WorkIndex from './container/work/WorkIndex';
 import { ThemeProvider } from './context/ThemeContext';
-// import AppProfile from './AppProfile';
-// import AppCounter from './AppCounter';
 // import AppProducts from './AppProducts';
-// import AppXY from './AppXY';
 // import App from './App';
 const router = createBrowserRouter([
   {
@@ -61,13 +57,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Reset />
-    {/* <AppProfile /> */}
-    {/* <AppCounter /> */}
     {/* <AppProducts /> */}
-    {/* <AppXY /> 마우스 따라가기 */}
-    {/* <AppMentor /> 중접객체 상태관리 */}
     {/* <AppWrap /> 컴포넌트 재사용 */}
-    {/* <AppCard /> */}
     {/* <App/> */}
     <ThemeProvider>
       <RouterProvider router={router} />

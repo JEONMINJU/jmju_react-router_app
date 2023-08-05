@@ -59,7 +59,6 @@ function WorkIndex() {
 					<button type="button" onClick={handleDeleteAll}>전체삭제</button>
 					<button type="button" onClick={onCheckedDelete}>선택삭제</button>
 				</div>
-
 				{/* 할일 개수 */}
 				<span className="mj__work__total">할일 : {list.length}개</span>
 
