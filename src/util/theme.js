@@ -12,9 +12,9 @@ const point = {
 }
 
 const color = {
-  black:'#111',
-  red:'#ff5500',
-  111: '#111111',
+  black: '#111',
+  white: '#fff',
+  red: '#ff5500',
   ec: '#ececec',
 }
 
