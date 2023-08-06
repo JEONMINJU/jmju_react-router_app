@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import theme from '../../util/theme';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function CalendarAddModal() {
 	const [modal, setModal] = useState(false);
+	const [startDate, setStartDate] = useState(new Date());
+	// const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
 	const onToggleMoal = () => {
 		setModal(!modal);
@@ -52,10 +56,17 @@ export default function CalendarAddModal() {
 
 							<div className='mj__modal__inner'>
 								{/* 날짜 선택 */}
-								
+								{/* selected와 onChange 필수 지정 */}
+								<DatePicker
+									showIcon
+									dateFormat='yyyy.MM.dd' // 날짜 형태
+									shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+									selected={startDate}
+									onChange={(date) => setStartDate(date)}
+								/>
 
 								{/* 내용 입력 */}
-								<div>
+								<div className='mj__modal__write'>
 									<span>어떤 일정이 있나요?</span>
 									
 									<form action="">
@@ -85,12 +96,12 @@ const CalendarModal = styled.div`
 	.mj {
 		&__modal {
 			position: fixed;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				width: 100%;
-				height: 100vh;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 100vh;
 
 			&__overlay {
 				position: fixed;
@@ -129,6 +140,10 @@ const CalendarModal = styled.div`
 
 			&__inner {
 				padding: 20px;
+			}
+
+			&__write {
+				margin-top: 20px;
 			}
 
 			&__add {
