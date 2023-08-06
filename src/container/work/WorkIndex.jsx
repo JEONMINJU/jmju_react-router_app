@@ -55,9 +55,11 @@ function WorkIndex() {
 				<div className="mj__work__top">
 					<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
 					
-					<button type="button" onClick={allChecked}>전체선택</button>
-					<button type="button" onClick={handleDeleteAll}>전체삭제</button>
-					<button type="button" onClick={onCheckedDelete}>선택삭제</button>
+					<div>
+						<button type="button" onClick={allChecked}>전체선택</button>
+						<button type="button" onClick={handleDeleteAll}>전체삭제</button>
+						<button type="button" onClick={onCheckedDelete}>선택삭제</button>
+					</div>
 				</div>
 				{/* 할일 개수 */}
 				<span className="mj__work__total">할일 : {list.length}개</span>

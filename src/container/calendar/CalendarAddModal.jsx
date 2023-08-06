@@ -3,17 +3,21 @@ import styled from 'styled-components';
 import theme from '../../util/theme';
 
 export default function CalendarAddModal() {
-	const [modal, setModal] = useState(true);
+	const [modal, setModal] = useState(false);
 
 	const onToggleMoal = () => {
-		console.log("modal controll")
 		setModal(!modal);
 	};
 
 	const onModalClose = () => {
-		console.log("modal close");
 		setModal(false);
 	};
+
+	if(modal) {
+		document.body.classList.add('active-modal');
+	} else {
+		document.body.classList.remove('active-modal');
+	}
 
 	return (
 		<>
@@ -29,7 +33,10 @@ export default function CalendarAddModal() {
 					<section className='mj__modal'>
 						<h2 className='mj__title__hidden'>일정 추가</h2>
 
-						<div className='mj__modal__overlay'></div>
+						<div 
+							onClick={onModalClose}
+							className='mj__modal__overlay'
+						></div>
 
 						<div className='mj__modal__content'>
 							<header className='mj__modal__header'>
@@ -43,21 +50,23 @@ export default function CalendarAddModal() {
 							</button>
 							</header>
 
-							{/* 날짜 선택 */}
-							
-
-							{/* 내용 입력 */}
-							<div>
-								<span>어떤 일정이 있나요?</span>
+							<div className='mj__modal__inner'>
+								{/* 날짜 선택 */}
 								
-								<form action="">
-									<input type="text" />
-									<label htmlFor=""></label>
-								</form>
-							</div>
 
-							{/* 추가 버튼 */}
-							<button type='button'>완료</button>
+								{/* 내용 입력 */}
+								<div>
+									<span>어떤 일정이 있나요?</span>
+									
+									<form action="">
+										<input type="text" />
+										<label htmlFor=""></label>
+									</form>
+								</div>
+
+								{/* 추가 버튼 */}
+								<button type='button' className='mj__modal__add'>추가</button>
+							</div>
 						</div>
 					</section>
 				</CalendarModal>
@@ -67,10 +76,21 @@ export default function CalendarAddModal() {
 };
 
 const CalendarModal = styled.div`
+	position: relative;
+
+	.mj__title__hidden {
+		${theme.hidden};
+	}
 	
 	.mj {
 		&__modal {
-			position: relative;
+			position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 100vh;
 
 			&__overlay {
 				position: fixed;
@@ -91,7 +111,6 @@ const CalendarModal = styled.div`
 				transform: translate(-50%, -50%);
 				width: 300px;
 				min-height: 400px;
-				padding: 20px;
 				background: ${theme.color.white};
 				border-radius: 4px;
 			}
@@ -99,10 +118,21 @@ const CalendarModal = styled.div`
 			&__header {
 				${theme.flexCenter}
 				justify-content: space-between;
+				padding: 20px;
+				border-bottom: 1px solid ${theme.color.ec};
 			}
 
 			&__title {
+				font-size: 14px;
+				font-weight: 500;
+			}
 
+			&__inner {
+				padding: 20px;
+			}
+
+			&__add {
+				margin-top: 10px;
 			}
 		}
 	}
