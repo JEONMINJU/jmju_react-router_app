@@ -24,6 +24,7 @@ import dayjs from 'dayjs';
 // import "./styles.css";
 import reportWebVitals from './reportWebVitals';
 import {
+  BrowserRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
@@ -32,6 +33,7 @@ import Main from './container/main/Main';
 import CalendarIndex from './container/calendar/CalendarIndex';
 import WorkIndex from './container/work/WorkIndex';
 import { ThemeProvider } from './context/ThemeContext';
+import Dockbar from './components/Dockbar/Dockbar';
 // import AppProducts from './AppProducts';
 // import App from './App';
 const router = createBrowserRouter([
@@ -62,6 +64,13 @@ root.render(
     {/* <App/> */}
     <ThemeProvider>
       <RouterProvider router={router} />
+      
+      {/* dockbar Link 태그 오류 :
+        원인은 Dockbar 컴포넌트가 라우터로 감싸져 있지 않아 생긴 문제였다. 
+      */}
+      <BrowserRouter>
+        <Dockbar />
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
 );
