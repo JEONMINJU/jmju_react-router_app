@@ -38,9 +38,9 @@ function CalendarIndex() {
 					tileContent={({date})=> {
 						// console.log(date)
 						// 캘린더날짜와 추가날짜같은거 필터
-						const matchWithAdded = calendar.filter(f => f.date === dayjs(new Date(date)).format('YYYY-MM-DD'))
+						const matchWithAdded = calendar?.filter(f => f.date === dayjs(new Date(date)).format('YYYY-MM-DD'))
 					
-						return matchWithAdded.map(item=><div>{item.text}</div>)
+						return matchWithAdded?.map(item=><div>{item.text}</div>)
 					}} 
 				/>
 

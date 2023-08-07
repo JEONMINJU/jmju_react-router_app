@@ -30,6 +30,10 @@ export default function CalendarAddModal({onAdd}) {
       ...storageSchedule,
       { id: uuidv4(), text: text, date: dayjs(new Date(startDate)).format('YYYY-MM-DD') },
     ]);
+
+		setText('');
+
+		onModalClose();
 	};
 
 	if(modal) {
@@ -86,9 +90,9 @@ export default function CalendarAddModal({onAdd}) {
 									
 									<form>
 										<input 
-											className="mj__addList__input"
+											className="mj__modal__input"
 											type="text" 
-											placeholder="일정 입력하세요."
+											placeholder="일정을 입력하세요."
 											value={text}
 											onChange={onChange}
 										/>
