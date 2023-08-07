@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // css import
 import CommonHeader from '../../components/Header/CommonHeader';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import CalendarAddModal from './CalendarAddModal';
+import { getLocalStorage, setLocalStorage } from '../../util/util';
 
 function CalendarIndex() {
 	const [value, onChange] = useState(new Date());
+
+	// 캘린더 상태관리
+	const [calendar, setCalendar] = useState();
+	const [mount, setMount] = useState(false);
+
+	useEffect(() => {
+		setCalendar(getLocalStorage('scheduleList') || []);
+		setMount(true);
+	}, []);
+
+	useEffect(() => {
+		if (mount) {
+			setLocalStorage('scheduleList', calendar);
+		}
+	}, [calendar, mount]);
+
+	const onAddSchedule = (list) => setCalendar((prev)=>prev.concat(list));
 
 	return (
 		<CalendarIndexSection>
@@ -17,9 +35,16 @@ function CalendarIndex() {
 					onChange={onChange}
 					value={value}
 					formatDay={(locale, date)=>dayjs(new Date(date)).format('DD')}
+					tileContent={({date})=> {
+						// console.log(date)
+						// 캘린더날짜와 추가날짜같은거 필터
+						const matchWithAdded = calendar.filter(f => f.date === dayjs(new Date(date)).format('YYYY-MM-DD'))
+					
+						return matchWithAdded.map(item=><div>{item.text}</div>)
+					}} 
 				/>
 
-				<CalendarAddModal />
+				<CalendarAddModal onAdd={onAddSchedule}/>
 			</div>
 		</CalendarIndexSection>
 	)
@@ -63,6 +88,15 @@ const CalendarIndexSection = styled.section`
     border-radius: 4px;
     /* color: #fff; */
   }
+
+	.dot {
+  height: 4px;
+  width: 4px;
+  background-color: #63A1FF;
+  border-radius: 50%;
+  display: flex;
+  margin-left: 1px;
+}
 `
 
 const CalendarAdd = styled.button`

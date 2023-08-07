@@ -3,11 +3,17 @@ import styled from 'styled-components';
 import theme from '../../util/theme';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { getLocalStorage, setLocalStorage } from '../../util/util';
+import { v4 as uuidv4 } from "uuid";
+import dayjs from 'dayjs';
 
-export default function CalendarAddModal() {
+export default function CalendarAddModal({onAdd}) {
 	const [modal, setModal] = useState(false);
 	const [startDate, setStartDate] = useState(new Date());
+	const [text, setText] = useState('');
 	// const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+	
+	const onChange = (e) => {setText(e.target.value);}
 
 	const onToggleMoal = () => {
 		setModal(!modal);
@@ -15,6 +21,15 @@ export default function CalendarAddModal() {
 
 	const onModalClose = () => {
 		setModal(false);
+	};
+
+	const onAddSchedule = () => {
+		const storageSchedule = getLocalStorage("scheduleList") || [];
+
+		setLocalStorage("scheduleList", [
+      ...storageSchedule,
+      { id: uuidv4(), text: text, date: dayjs(new Date(startDate)).format('YYYY-MM-DD') },
+    ]);
 	};
 
 	if(modal) {
@@ -69,14 +84,19 @@ export default function CalendarAddModal() {
 								<div className='mj__modal__write'>
 									<span>어떤 일정이 있나요?</span>
 									
-									<form action="">
-										<input type="text" />
-										<label htmlFor=""></label>
+									<form>
+										<input 
+											className="mj__addList__input"
+											type="text" 
+											placeholder="일정 입력하세요."
+											value={text}
+											onChange={onChange}
+										/>
 									</form>
 								</div>
 
 								{/* 추가 버튼 */}
-								<button type='button' className='mj__modal__add'>추가</button>
+								<button type='button' className='mj__modal__add' onClick={onAddSchedule}>추가</button>
 							</div>
 						</div>
 					</section>
