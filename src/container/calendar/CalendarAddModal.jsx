@@ -11,7 +11,6 @@ export default function CalendarAddModal({onAdd}) {
 	const [modal, setModal] = useState(false);
 	const [startDate, setStartDate] = useState(new Date());
 	const [text, setText] = useState('');
-	// const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 	
 	const onChange = (e) => {setText(e.target.value);}
 
@@ -25,15 +24,22 @@ export default function CalendarAddModal({onAdd}) {
 
 	const onAddSchedule = () => {
 		const storageSchedule = getLocalStorage("scheduleList") || [];
+		const scheduleDate = dayjs(new Date(startDate)).format('YYYY-MM-DD');
 
-		setLocalStorage("scheduleList", [
-      ...storageSchedule,
-      { id: uuidv4(), text: text, date: dayjs(new Date(startDate)).format('YYYY-MM-DD') },
-    ]);
+		if(text === '') {
+			alert('텍스트를 입력해주세요.');
 
-		setText('');
-
-		onModalClose();
+			return false;
+		} else {
+			setLocalStorage("scheduleList", [
+				...storageSchedule,
+				{ id: uuidv4(), text: text, date: scheduleDate },
+			]);
+	
+			setText('');
+	
+			onModalClose();
+		}
 	};
 
 	if(modal) {
@@ -75,10 +81,9 @@ export default function CalendarAddModal({onAdd}) {
 
 							<div className='mj__modal__inner'>
 								{/* 날짜 선택 */}
-								{/* selected와 onChange 필수 지정 */}
 								<DatePicker
 									showIcon
-									dateFormat='yyyy.MM.dd' // 날짜 형태
+									dateFormat='yyyy.MM.dd'
 									shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
 									selected={startDate}
 									onChange={(date) => setStartDate(date)}
@@ -88,7 +93,7 @@ export default function CalendarAddModal({onAdd}) {
 								<div className='mj__modal__write'>
 									<span>어떤 일정이 있나요?</span>
 									
-									<form>
+									<form className='mj__modal__form'>
 										<input 
 											className="mj__modal__input"
 											type="text" 
@@ -100,7 +105,9 @@ export default function CalendarAddModal({onAdd}) {
 								</div>
 
 								{/* 추가 버튼 */}
-								<button type='button' className='mj__modal__add' onClick={onAddSchedule}>추가</button>
+								<div className='mj__modal__button'>
+									<button type='button' className='mj__modal__add' onClick={onAddSchedule}>추가</button>
+								</div>
 							</div>
 						</div>
 					</section>
@@ -144,8 +151,8 @@ const CalendarModal = styled.div`
 				left: 50%;
 				z-index: 1;
 				transform: translate(-50%, -50%);
-				width: 300px;
-				min-height: 400px;
+				width: 340px;
+				min-height: 340px;
 				background: ${theme.color.white};
 				border-radius: 4px;
 			}
@@ -164,6 +171,16 @@ const CalendarModal = styled.div`
 
 			&__inner {
 				padding: 20px;
+			}
+
+			&__button {
+				text-align: right;
+			}
+
+			// reset 필요
+			&__input {
+				width: 300px;
+				margin-top: 10px;
 			}
 
 			&__write {
