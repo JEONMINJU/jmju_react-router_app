@@ -43,7 +43,7 @@ function TodoIndex() {
 }
 
 const TodoContainer = styled.div`
-
+  
 `;
 
 export default TodoIndex;

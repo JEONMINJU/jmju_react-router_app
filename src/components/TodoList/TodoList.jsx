@@ -43,6 +43,7 @@ export default function TodoList({ todos, setTodos }) {
 }
 
 const Container = styled.section`
+  padding: 20px;
   .swiper-slide {
     li {
       margin: 30px;

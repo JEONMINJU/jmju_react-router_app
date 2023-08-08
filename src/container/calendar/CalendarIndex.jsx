@@ -40,7 +40,10 @@ function CalendarIndex() {
 						// 캘린더날짜와 추가날짜같은거 필터
 						const matchWithAdded = calendar?.filter(f => f.date === dayjs(new Date(date)).format('YYYY-MM-DD'))
 					
-						return matchWithAdded?.map(item=><div>{item.text}</div>)
+						/* 
+							배열관련 함수들은 data undefind 시 에러 뜬다. ? 추가
+						*/
+						return matchWithAdded?.map(item=><div className='mj__calendar__list'>{item.text}</div>)
 					}} 
 				/>
 
@@ -53,8 +56,19 @@ function CalendarIndex() {
 export default CalendarIndex;
 
 const CalendarIndexSection = styled.section`
-	.mj__calendar__wrapper {
-		padding: 0 20px;
+	.mj {
+		&__calendar {
+			&__wrapper {
+				padding: 0 20px;
+			}
+
+			&__list {
+				margin-top: 4px;
+				padding: 4px 0;
+				background: #ffa454;
+				border-radius: 2px;
+			}
+		}
 	}
 
 	.react-calendar {
@@ -79,6 +93,8 @@ const CalendarIndexSection = styled.section`
     /* color:;
     background: ;
     text-align: ; */
+		height: 70px;
+		border : 1px solid #eee;
   }
 
 	//day 타일 hover, focus 시 모양 커스텀
@@ -88,15 +104,6 @@ const CalendarIndexSection = styled.section`
     border-radius: 4px;
     /* color: #fff; */
   }
-
-	.dot {
-  height: 4px;
-  width: 4px;
-  background-color: #63A1FF;
-  border-radius: 50%;
-  display: flex;
-  margin-left: 1px;
-}
 `
 
 const CalendarAdd = styled.button`
