@@ -5,6 +5,9 @@ import CommonHeader from "../../components/Header/CommonHeader";
 import theme from "../../util/theme";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import ListTextType from "../../components/List/ListTextType";
+// 모듈 불러오기
+import { toast, ToastContainer } from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 // 업무리스트 페이지
 function WorkIndex() {
@@ -48,6 +51,8 @@ function WorkIndex() {
 		}));
   };
 
+	const notify = ()  => toast("업무를 모두 완료하셨어요! 🎉");
+	
 	return (
 		<>
 			<CommonHeader title = 'Work List' />
@@ -64,8 +69,18 @@ function WorkIndex() {
 				{/* 할일 개수 */}
 				<span className="mj__work__total">할일 : {list.length}개</span>
 
-				{list && <ListTextType list={list} setLists={setLists} />}	
+				{list && <ListTextType notify={notify} list={list} setLists={setLists} />}	
 				
+				<div>
+					<ToastContainer
+						position="top-center"
+						draggable
+						pauseOnHover
+						closeOnClick
+						limit={1}
+					/>
+				</div>
+
 				<AddList onAdd={handleAdd} />
 			</WorkIndexSection>
 		</>

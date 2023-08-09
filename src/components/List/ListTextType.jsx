@@ -3,9 +3,14 @@ import { FaTrashAlt } from "react-icons/fa";
 import styled from "styled-components";
 import theme from "../../util/theme";
 
-function ListTextType({list, setLists}) {
+function ListTextType({list, setLists, notify}) {
   const handleDelete = (id) => {
-    setLists((prev) => prev.filter((item) => item.id !== id))
+    setLists((prev) => prev.filter((item) => {
+      if(prev.length === 1) {
+        notify();
+      }
+      return item.id !== id;
+    }))
   }
 
   const handleChange = (e) => {
