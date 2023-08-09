@@ -5,6 +5,10 @@ import dayjs from 'dayjs';
 import theme from "../../util/theme";
 import { useDarkMode } from "../../context/ThemeContext";
 import { HiMoon, HiSun } from "react-icons/hi";
+import { 
+	BsList,
+} from "react-icons/bs"; 
+
 
 function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
@@ -25,7 +29,7 @@ function Main() {
 
 	return (
 		<MainContainer 	onPointerMove={(e) => {
-			console.log(e.clientX, e.clientY);
+			// console.log(e.clientX, e.clientY);
 			// setX(e.clientX);
 			// setY(e.clientY);
 			// setPosition((prev) => ({...prev, x:e.clientX}));
@@ -35,7 +39,7 @@ function Main() {
 
 				<h2 className="mj__text__hidden">main</h2>
 				<nav className="mj__main__nav">
-					<button type="button" className="nav__menu">메뉴</button>
+					<BsList className="nav__menu" size="24" />
 					<span className="nav__date">{date}</span>
 
 					{/* 다크모드 토글 */}
@@ -83,6 +87,8 @@ const MainContainer = styled.section`
 			&__nav {
 				position: relative;
 				padding: 20px;
+				${theme.flexCenter};
+				justify-content: flex-start;
 
 				.nav {
 					&__menu {

@@ -131,14 +131,14 @@ const CommonButton = styled(motion.button)`
 const Wrapper = styled.li`
   /* ${theme.flexCenter} */
   justify-content: space-between;
-  padding: 20px;
+  padding: 16px;
   border-bottom: 1px solid ${theme.color.ec};
 
   form {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: 200px;
+    min-height: 100px;
     padding: 16px;
     background: ${theme.bg.f5};
     border-radius: 6px;

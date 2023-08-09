@@ -57,22 +57,16 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
+  <>
     <Reset />
     {/* <AppProducts /> */}
     {/* <AppWrap /> 컴포넌트 재사용 */}
-    {/* <App/> */}
+
     <ThemeProvider>
       <RouterProvider router={router} />
-      
-      {/* dockbar Link 태그 오류 :
-        원인은 Dockbar 컴포넌트가 라우터로 감싸져 있지 않아 생긴 문제였다. 
-      */}
-      <BrowserRouter>
-        <Dockbar />
-      </BrowserRouter>
+      <Dockbar />
     </ThemeProvider>
-  </React.StrictMode>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -28,7 +28,7 @@ export default function AddTodo({ onAdd }) {
     <AddForm onSubmit={handleSubmit}>
       <AddInput
         type="text"
-        placeholder="Add Todo Plz"
+        placeholder="텍스트를 입력해주세요."
         value={text}
         onChange={handleChange}
       />
@@ -42,7 +42,7 @@ ${theme.flexCenter};
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 70px;
   z-index: 1;
   max-width: 100%;
   padding: 20px;
