@@ -11,6 +11,7 @@ import theme from "../../util/theme";
 /* 슬라이드 */
 import { Navigation, Pagination, Parallax } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
+import Dockbar from "../Dockbar/Dockbar";
 // import "swiper/css/navigation";
 // import "swiper/css/pagination";
 
@@ -19,26 +20,29 @@ export default function TodoList({ todos, setTodos }) {
   // const handleAdd = (todo) => setTodos((prev)=>prev.concat(todo));
 
   return (
-    <Container>
-      <Swiper
-      speed={600}
-      parallax={true}
-      pagination={{
-        clickable: true,
-      }}
-      navigation={true}
-      modules={[Parallax, Pagination, Navigation]}
-      >
-      {todos.map((item) => (
-        <SwiperSlide>
-          <Todo key={item.id} todo={item} setTodos={setTodos} />
-        </SwiperSlide>
-      ))}
-      </Swiper>
+    <>
+      <Container>
+        <Swiper
+        speed={600}
+        parallax={true}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Parallax, Pagination, Navigation]}
+        >
+        {todos.map((item) => (
+          <SwiperSlide>
+            <Todo key={item} todo={item} setTodos={setTodos} />
+          </SwiperSlide>
+        ))}
+        </Swiper>
 
-      {/* 입력 인풋 */}
-      <AddTodo onAdd={handleAdd} />
-    </Container>
+        {/* 입력 인풋 */}
+        <AddTodo onAdd={handleAdd} />
+      </Container>
+      <Dockbar/>
+    </>
   );
 }
 

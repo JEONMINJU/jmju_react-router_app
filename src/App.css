@@ -17,10 +17,16 @@
   background-color: black;
 
   .mj__main__wrapper {
+    border: 1px solid #fff;
     background-color: black !important;
+  }
+
+  .nav__date {
+    color: #fff;
   }
 }
 
+/* 모달 오픈시 스크롤 막기 */
 body.active-modal {
   overflow-y: hidden;
 }

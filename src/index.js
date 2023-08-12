@@ -64,7 +64,6 @@ root.render(
 
     <ThemeProvider>
       <RouterProvider router={router} />
-      <Dockbar />
     </ThemeProvider>
   </>
 );

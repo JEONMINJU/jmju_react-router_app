@@ -7,6 +7,7 @@ const hidden = css `
 // #endregion
 
 // #region 컬러
+// const palette = {
 const point = {
   
 }
@@ -14,7 +15,6 @@ const point = {
 const color = {
   black: '#111',
   white: '#fff',
-  red: '#ff5500',
   ec: '#ececec',
 }
 
@@ -23,11 +23,6 @@ const bg = {
   f8:'#f8f8f8',
   f5: '#f5f5f5',
 }
-
-// const palette = {
-//   black:"#262626",
-//   red:"#ff5500"
-// }
 // #endregion
 
 // #region 말줄임
@@ -73,6 +68,29 @@ display: flex;
 justify-content: center;
 align-items: center;
 `
+
+const flexbetween = css`
+display: flex;
+justify-content: space-between;
+align-items: center;
+`
+
+const flexAround = css`
+display: flex;
+justify-content: space-around;
+align-items: center;
+`
+// #endregion
+
+// #region img
+const imgFitCover = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
 // #endregion
 
 // #region 공통 버튼
@@ -93,6 +111,10 @@ const theme = {
 
   flexStart,
   flexCenter,
+  flexbetween,
+  flexAround,
+
+  imgFitCover,
 
   line1,
   line2,
