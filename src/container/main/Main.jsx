@@ -15,6 +15,7 @@ import feelingImg05 from '../../images/main/img_main_feeling05.png';
 import feelingImg06 from '../../images/main/img_main_feeling06.png';
 import feelingImg07 from '../../images/main/img_main_feeling07.png';
 import feelingImg08 from '../../images/main/img_main_feeling08.png';
+import Dockbar from "../../components/Dockbar/Dockbar";
 
 
 function Main() {
@@ -45,63 +46,66 @@ function Main() {
 	// }}>
 
 	return (
-		<MainContainer 	onPointerMove={(e) => {
-			// console.log(e.clientX, e.clientY);
-			// setX(e.clientX);
-			// setY(e.clientY);
-			// setPosition((prev) => ({...prev, x:e.clientX}));
-			setPosition({y:e.clientY, x:e.clientX});
-		}}>
-				<div className="pointer" style={{transform:`translate(${position.x}px, ${position.y}px)`}}></div>
-				<h2 className="mj__text__hidden">메인페이지</h2>
+		<>
+			<MainContainer 	onPointerMove={(e) => {
+				// console.log(e.clientX, e.clientY);
+				// setX(e.clientX);
+				// setY(e.clientY);
+				// setPosition((prev) => ({...prev, x:e.clientX}));
+				setPosition({y:e.clientY, x:e.clientX});
+			}}>
+					<div className="pointer" style={{transform:`translate(${position.x}px, ${position.y}px)`}}></div>
+					<h2 className="mj__text__hidden">메인페이지</h2>
 
-				<nav className="mj__main__nav">
-					<BsList className="nav__menu" size="24" />
-					<span className="nav__date">{date}</span>
-					<DarkModeButton onClick={toggleTheme}>{!isDark ? <BsToggleOn size="26" /> : <BsToggleOff size="26" color="#fff" />}</DarkModeButton>
-				</nav>
+					<nav className="mj__main__nav">
+						<BsList className="nav__menu" size="24" />
+						<span className="nav__date">{date}</span>
+						<DarkModeButton onClick={toggleTheme}>{!isDark ? <BsToggleOn size="26" /> : <BsToggleOff size="26" color="#fff" />}</DarkModeButton>
+					</nav>
 
-				<div className="mj__main__feeling">
-					{/* <span className="feeling__title">How do you feeling today?</span> */}
-					<span className="feeling__title">오늘의 기분은 어떤가요?</span>
+					<div className="mj__main__feeling">
+						{/* <span className="feeling__title">How do you feeling today?</span> */}
+						<span className="feeling__title">오늘의 기분은 어떤가요?</span>
 
-					<ul className="feeling__box">
-						{feelingImg.map((item) => (
-							<li className="feeling__list" key={item}>
-								<figure className="feeling__img">
-									<img src={item} alt="기분이미지" />
-								</figure>
-							</li>
-						))}
-					</ul>
-				</div>
-
-				<div className="mj__main__wrapper">
-					<h3 className="mj__main__title">매일의 기록 ☺</h3>
-
-					<div className="mj__main__inner">
-						{/* 오늘 날짜 캘린더 */}
-						<div>
-							<span className="nav__date">{date}</span>
-						</div>
-
-						{/* 캘린더 */}
-						<Link to="/calendar">
-							<button type="button" className="mj__main__direct">CALENDAR</button>
-						</Link>
-
-						{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
-						<Link to="/work">
-							<button type="button" className="mj__main__direct">WORK</button>
-						</Link>
-
-						{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
-						<Link to="/todos">
-							<button type="button" className="mj__main__direct">ISSUE</button>
-						</Link>
+						<ul className="feeling__box">
+							{feelingImg.map((item) => (
+								<li className="feeling__list" key={item}>
+									<figure className="feeling__img">
+										<img src={item} alt="기분이미지" />
+									</figure>
+								</li>
+							))}
+						</ul>
 					</div>
-				</div>
-		</MainContainer>
+
+					<div className="mj__main__wrapper">
+						<h3 className="mj__main__title">매일의 기록 ☺</h3>
+
+						<div className="mj__main__inner">
+							{/* 오늘 날짜 캘린더 */}
+							<div>
+								<span className="nav__date">{date}</span>
+							</div>
+
+							{/* 캘린더 */}
+							<Link to="/calendar">
+								<button type="button" className="mj__main__direct">CALENDAR</button>
+							</Link>
+
+							{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
+							<Link to="/work">
+								<button type="button" className="mj__main__direct">WORK</button>
+							</Link>
+
+							{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
+							<Link to="/todos">
+								<button type="button" className="mj__main__direct">ISSUE</button>
+							</Link>
+						</div>
+					</div>
+			</MainContainer>
+			<Dockbar />
+		</>
 	);
 };
 

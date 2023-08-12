@@ -8,6 +8,7 @@ import ListTextType from "../../components/List/ListTextType";
 // 모듈 불러오기
 import { toast, ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import Dockbar from "../../components/Dockbar/Dockbar";
 
 // 업무리스트 페이지
 function WorkIndex() {
@@ -83,6 +84,7 @@ function WorkIndex() {
 
 				<AddList onAdd={handleAdd} />
 			</WorkIndexSection>
+			<Dockbar />
 		</>
 	)
 }

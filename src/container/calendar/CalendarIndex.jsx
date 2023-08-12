@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import dayjs from 'dayjs';
 import CalendarAddModal from './CalendarAddModal';
 import { getLocalStorage, setLocalStorage } from '../../util/util';
+import Dockbar from '../../components/Dockbar/Dockbar';
 
 function CalendarIndex() {
 	const [value, onChange] = useState(new Date());
@@ -28,28 +29,31 @@ function CalendarIndex() {
 	const onAddSchedule = (list) => setCalendar((prev)=>prev.concat(list));
 
 	return (
-		<CalendarIndexSection>
-			<CommonHeader title = 'Calendar' />
-			<div className='mj__calendar__wrapper'>
-				<Calendar 
-					onChange={onChange}
-					value={value}
-					formatDay={(locale, date)=>dayjs(new Date(date)).format('DD')}
-					tileContent={({date})=> {
-						// console.log(date)
-						// 캘린더날짜와 추가날짜같은거 필터
-						const matchWithAdded = calendar?.filter(f => f.date === dayjs(new Date(date)).format('YYYY-MM-DD'))
-					
-						/* 
-							배열관련 함수들은 data undefind 시 에러 뜬다. ? 추가
-						*/
-						return matchWithAdded?.map(item=><div className='mj__calendar__list'>{item.text}</div>)
-					}} 
-				/>
+		<>
+			<CalendarIndexSection>
+				<CommonHeader title = 'Calendar' />
+				<div className='mj__calendar__wrapper'>
+					<Calendar 
+						onChange={onChange}
+						value={value}
+						formatDay={(locale, date)=>dayjs(new Date(date)).format('DD')}
+						tileContent={({date})=> {
+							// console.log(date)
+							// 캘린더날짜와 추가날짜같은거 필터
+							const matchWithAdded = calendar?.filter(f => f.date === dayjs(new Date(date)).format('YYYY-MM-DD'))
+						
+							/* 
+								배열관련 함수들은 data undefind 시 에러 뜬다. ? 추가
+							*/
+							return matchWithAdded?.map(item=><div className='mj__calendar__list'>{item.text}</div>)
+						}} 
+					/>
 
-				<CalendarAddModal onAdd={onAddSchedule}/>
-			</div>
-		</CalendarIndexSection>
+					<CalendarAddModal onAdd={onAddSchedule}/>
+				</div>
+			</CalendarIndexSection>
+			<Dockbar />
+		</>
 	)
 }
 
