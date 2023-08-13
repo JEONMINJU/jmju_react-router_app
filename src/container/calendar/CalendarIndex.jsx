@@ -96,10 +96,9 @@ const CalendarIndexSection = styled.section`
 			content: "";
 			display: block;
 			position: absolute;
-			top:50%;
-			left: 50%;
+			top: 4px;
+			left: 4px;
 			z-index: -1;
-			transform: translate(-50%, -50%);
 			width: 30px;
 			height: 30px;
 			border-radius: 50%;
@@ -110,9 +109,16 @@ const CalendarIndexSection = styled.section`
 
 	//day 타일 한개 한개 모양 커스텀하기
 	.react-calendar__tile {
-		padding: 0;
-		height: 70px;
+		position: relative;
+		min-height: 70px;
+		padding: 37px 2px 4px;
 		border : 0.5px solid ${theme.color.ec};
+
+		> abbr {
+      position: absolute;
+			top: 11px;
+			left: 11px;
+    }
   }
 
 	.react-calendar__tile--active {

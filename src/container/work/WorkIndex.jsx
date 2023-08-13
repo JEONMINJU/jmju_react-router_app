@@ -72,7 +72,7 @@ function WorkIndex() {
 					<button type="button" className="mj__work__button sizeS" onClick={onCheckedDelete}>선택삭제</button>
 				</div>
 
-				{list && <ListTextType notify={notify} list={list} setLists={setLists} />}	
+				{list && <ListTextType notify={notify} list={list} setLists={setLists} />}
 				
 				<div>
 					<ToastContainer

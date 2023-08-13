@@ -98,6 +98,7 @@ const AddListForm = styled.section`
 			&__button {
 				flex: 0 0 44px;
 				margin-left: 10px;
+				background: ${theme.color.white};
 				cursor: pointer;
 			}
 		}

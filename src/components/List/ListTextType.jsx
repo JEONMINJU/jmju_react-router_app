@@ -45,6 +45,12 @@ function ListTextType({list, setLists, notify}) {
           </li>
         ))}
       </ul>
+
+      {list.length < 1 &&
+        <div className="mj__work__empty">
+          <p className="empty__text">등록된 리스트가 없습니다.</p>
+        </div>
+      }
     </List>
   )
 }
@@ -102,6 +108,11 @@ const List = styled.div`
       &__delete {
         position: absolute;
         right: 20px;
+      }
+
+      &__empty {
+        ${theme.flexCenter};
+        min-height: 300px;
       }
     }
   }
