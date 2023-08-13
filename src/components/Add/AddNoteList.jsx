@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
-import { setLocalStorage, getLocalStorage } from "../util/util";
-import theme from '../util/theme';
+import { setLocalStorage, getLocalStorage } from "../../util/util";
+import theme from '../../util/theme';
 import dayjs from 'dayjs';
 
 export default function AddTodo({ onAdd }) {

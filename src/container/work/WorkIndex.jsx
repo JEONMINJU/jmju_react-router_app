@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import AddList from '../../components/Add/AddList';
+import AddList from '../../components/Add/AddWorkList';
 import styled from "styled-components";
 import CommonHeader from "../../components/Header/CommonHeader";
 import theme from "../../util/theme";

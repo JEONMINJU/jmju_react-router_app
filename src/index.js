@@ -7,8 +7,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Reset }from 'styled-reset'
 
-import dayjs from 'dayjs';
-
 // #region dayjs
 // import * as dayjs from "dayjs";
 
@@ -24,16 +22,14 @@ import dayjs from 'dayjs';
 // import "./styles.css";
 import reportWebVitals from './reportWebVitals';
 import {
-  BrowserRouter,
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import TodoIndex from './container/todo/TodoIndex';
 import Main from './container/main/Main';
 import CalendarIndex from './container/calendar/CalendarIndex';
 import WorkIndex from './container/work/WorkIndex';
+import NoteIndex from './container/note/NoteIndex';
 import { ThemeProvider } from './context/ThemeContext';
-import Dockbar from './components/Dockbar/Dockbar';
 // import AppProducts from './AppProducts';
 // import App from './App';
 const router = createBrowserRouter([
@@ -50,8 +46,8 @@ const router = createBrowserRouter([
     element: <WorkIndex />,
   },
   {
-    path: "/todos",
-    element: <TodoIndex />,
+    path: "/note",
+    element: <NoteIndex />,
   },
 ]);
 

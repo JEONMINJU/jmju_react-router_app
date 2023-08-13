@@ -1,8 +1,8 @@
 import React from "react";
 
 /* 컴포넌트 */
-import AddTodo from "../AddTodo";
-import Todo from "../Todo/Todo";
+import AddNoteList from "../Add/AddNoteList";
+import Note from "../Note/Note";
 
 /* 스타일 */
 import styled from "styled-components";
@@ -15,7 +15,7 @@ import Dockbar from "../Dockbar/Dockbar";
 // import "swiper/css/navigation";
 // import "swiper/css/pagination";
 
-export default function TodoList({ todos, setTodos }) {
+export default function NoteList({ todos, setTodos }) {
   const handleAdd = (todo) => setTodos((prev) => [...prev, todo]); // 기존의 todos 배열에 todo 추가
   // const handleAdd = (todo) => setTodos((prev)=>prev.concat(todo));
 
@@ -33,13 +33,13 @@ export default function TodoList({ todos, setTodos }) {
         >
         {todos.map((item) => (
           <SwiperSlide>
-            <Todo key={item} todo={item} setTodos={setTodos} />
+            <Note key={item} todo={item} setTodos={setTodos} />
           </SwiperSlide>
         ))}
         </Swiper>
 
         {/* 입력 인풋 */}
-        <AddTodo onAdd={handleAdd} />
+        <AddNoteList onAdd={handleAdd} />
       </Container>
       <Dockbar/>
     </>

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import dayjs from 'dayjs';
 
-export default function Todo({ todo, setTodos }) {
+export default function Note({ todo, setTodos }) {
   const { text, date, status, id } = todo;
 
   console.log(id, text, status)

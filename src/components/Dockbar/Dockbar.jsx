@@ -32,22 +32,32 @@ const dockbarRouter = [
 	{
 		id: '03',
 		title: '이슈 & 에피소드',
-		path: '/todos',
+		path: '/note',
 		icon: <BsPlusSquare size="24"/>,
 	},
 	{
 		id: '04',
 		title: '정보',
-		path: '/', // 추후 추가
+		path: '/info', // 추후 추가
 		icon: <BsFillPersonFill size="24"/>,
 	},
 ];
 
 export default function Dockbar() {
+	const currentPath = window.location.pathname;
+	
 	return (
 		<DockbarSection>
 			{dockbarRouter.map((menu) => (
-				<Link to={menu.path} key={menu.id} className="mj__link">
+				<Link 
+					to={menu.path} 
+					key={menu.id} 
+					className={
+						currentPath === menu.path
+						? 'mj__link active'
+						: 'mj__link'
+					}
+				>
 					{menu.icon}
 				</Link>
 			) )}
@@ -68,8 +78,12 @@ const DockbarSection = styled.section`
 	.mj {
 		&__link {
 			padding: 4px;
-			color: ${theme.color.black};
+			color: ${theme.color.af};
 			text-decoration: none;
+
+			&.active {
+				color: ${theme.color.black};
+			}
 
 			span {
 				font-size: 0;

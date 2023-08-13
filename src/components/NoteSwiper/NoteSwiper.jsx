@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Navigation, Pagination, Parallax } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-function TodoSwiper() {
+function NoteSwiper() {
   return (
     <Container>
       <Swiper
@@ -91,7 +91,7 @@ function TodoSwiper() {
   );
 }
 
-export default TodoSwiper;
+export default NoteSwiper;
 
 const Container = styled.div`
   #app {

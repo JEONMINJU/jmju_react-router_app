@@ -98,7 +98,7 @@ function Main() {
 							</Link>
 
 							{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
-							<Link to="/todos">
+							<Link to="/note">
 								<button type="button" className="mj__main__direct">ISSUE</button>
 							</Link>
 						</div>

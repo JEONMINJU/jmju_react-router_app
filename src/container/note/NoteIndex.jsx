@@ -4,17 +4,16 @@ import React, { useEffect, useState } from "react";
 // import { useSearchParams } from "react-router-dom";
 
 /* 컴포넌트 */
-import TodoList from "../../components/TodoList/TodoList";
+import NoteList from "../../components/List/NoteList";
 
 /* 스타일 */
 import styled from "styled-components";
 
 /* 로컬 저장 */
 import { getLocalStorage, setLocalStorage } from "../../util/util";
-import theme from "../../util/theme";
 import CommonHeader from "../../components/Header/CommonHeader";
 
-function TodoIndex() {
+function NoteIndex() {
   // let [searchParams] = useSearchParams();
   // const todoIds = searchParams.get("id");
   const [mount, setMount] = useState(false);
@@ -35,15 +34,15 @@ function TodoIndex() {
   }, [todos, mount]); // 값이 변경될 때마다 실행될 코드
 
   return (
-    <TodoContainer className="mj__app__container">
+    <NoteContainer className="mj__app__container">
       <CommonHeader title = 'Note & Issue'/>
-      <TodoList todos={todos} setTodos={setTodos} />
-    </TodoContainer>
+      <NoteList todos={todos} setTodos={setTodos} />
+    </NoteContainer>
   );
 }
 
-const TodoContainer = styled.div`
+const NoteContainer = styled.div`
   
 `;
 
-export default TodoIndex;
+export default NoteIndex;
