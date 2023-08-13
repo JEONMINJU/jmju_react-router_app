@@ -60,15 +60,15 @@ function WorkIndex() {
 			<WorkIndexSection>
 				<div className="mj__work__top">
 					<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
+					<button type="button" className="mj__work__delete--all" onClick={handleDeleteAll}>전체삭제</button>
 					
-					<div>
-						<button type="button" onClick={allChecked}>전체선택</button>
-						<button type="button" onClick={handleDeleteAll}>전체삭제</button>
-						<button type="button" onClick={onCheckedDelete}>선택삭제</button>
-					</div>
 				</div>
 				{/* 할일 개수 */}
 				<span className="mj__work__total">할일 : {list.length}개</span>
+				<div>
+					<button type="button" onClick={allChecked}>전체선택</button>
+					<button type="button" onClick={onCheckedDelete}>선택삭제</button>
+				</div>
 
 				{list && <ListTextType notify={notify} list={list} setLists={setLists} />}	
 				
@@ -129,8 +129,6 @@ const WorkIndexSection = styled.section`
 				}
 			}
 
-
-
 			&__delete {
 				position: absolute;
 				right: 16px;
@@ -140,6 +138,14 @@ const WorkIndexSection = styled.section`
 				background: none;
 				border: none;
 				padding: 0;
+
+				&--all {
+
+				}
+
+				&--checked {
+					
+				}
 			}
 		}
 	}
