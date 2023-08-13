@@ -68,7 +68,7 @@ const CalendarIndexSection = styled.section`
 
 			&__list {
 				margin-top: 4px;
-				padding: 3px 10px;
+				padding: 3px;
 				background: ${theme.color.black};
 				border-radius: 20px;
 				font-size: 9px !important;

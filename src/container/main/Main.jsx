@@ -184,8 +184,8 @@ const MainContainer = styled.section`
 					&__list {
 						position: relative;
 						overflow: hidden;
-						width: 74px;
-						height: 74px;
+						width: 75px;
+						height: 75px;
 						border-radius: 10px;
 						box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 					}

@@ -11,6 +11,14 @@ const GlobalStyles = createGlobalStyle`
 
 		html {
       font-size: 12px;
+      box-sizing: border-box;
+    };
+
+    body {
+      position: relative;
+      color: #111;
+      font-family: 'Pretendard', sans-serif;
+      box-sizing: border-box;
     };
 		
     a {
@@ -22,6 +30,7 @@ const GlobalStyles = createGlobalStyle`
 			padding: 0;
 			background-color: transparent;
 			border: none;
+      color: ${theme.color.black};
 			cursor: pointer;
 
 			&.sizeS {
@@ -30,12 +39,6 @@ const GlobalStyles = createGlobalStyle`
 				border-radius: 3px;
 			}
 		};
-
-    body {
-      position: relative;
-      color: #111;
-      font-family: 'Pretendard', sans-serif;
-    };
 
 		h2, p {
       margin: 0;
@@ -71,6 +74,7 @@ const GlobalStyles = createGlobalStyle`
     textarea{
       -webkit-border-radius: 0;
       -webkit-appearance: none;
+      color: initial;
     }
 
     .mj {
