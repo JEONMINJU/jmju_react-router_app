@@ -79,7 +79,7 @@ function Main() {
 					</div>
 
 					<div className="mj__main__wrapper">
-						<h3 className="mj__main__title">매일의 기록 ☺</h3>
+						<h3 className="mj__main__title">매일을 기록하세요.</h3>
 
 						<div className="mj__main__inner">
 							{/* 오늘 날짜 캘린더 */}
@@ -184,8 +184,8 @@ const MainContainer = styled.section`
 					&__list {
 						position: relative;
 						overflow: hidden;
-						width: 80px;
-						height: 80px;
+						width: 74px;
+						height: 74px;
 						border-radius: 10px;
 						box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 					}

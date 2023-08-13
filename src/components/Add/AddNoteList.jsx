@@ -11,10 +11,12 @@ export default function AddTodo({ onAdd }) {
   // onAdd 를 props로 받고
   const [text, setText] = useState(""); // 초기 빈값
   const handleChange = (e) => setText(e.target.value); // event가 발생하면 setText에 있는 타켓의 value로 설정할것
-  const handleSubmit = (e) => {
+  
+  const handleAdd = () => {
     if (text.trim().length === 0) return;
-    e.preventDefault(); // page refesh 막기
+
     onAdd({ id: uuidv4(), text: text, date, status: "active" });
+
     const storageTodos = getLocalStorage("todo") || [];
 
     setLocalStorage("todo", [
@@ -22,37 +24,82 @@ export default function AddTodo({ onAdd }) {
       { id: uuidv4(), text: text, date, status: "active" },
     ]);
 
-    setText(""); // 입력 후 인풋 초기화
+    setText('');
   };
+
+	const onSubmit = (e) => {
+		e.preventDefault();// page refesh 막기
+		handleAdd();
+	};
+
+	const onClick = (e) => {
+		e.preventDefault();
+		handleAdd();
+	};
+
   return (
-    <AddForm onSubmit={handleSubmit}>
-      <AddInput
-        type="text"
-        placeholder="텍스트를 입력해주세요."
-        value={text}
-        onChange={handleChange}
-      />
-    </AddForm>
+    <NoteListForm>
+      <h2 className="mj__title__hidden">이슈, 메모 입력 폼</h2>
+
+      <div className="mj__noteList__wrapper">
+        <form className="mj__noteList__form" onSubmit={onSubmit}>
+          <input 
+            className="mj__noteList__input"
+            type="text" 
+            placeholder="텍스트를 입력해주세요."
+            value={text}
+            onChange={handleChange}
+          />
+        </form>
+
+        <button type="button" className="mj__noteList__button sizeS" onClick={onClick}>
+          추가
+        </button>
+      </div>
+    </NoteListForm>
   );
 }
 
 // style
-const AddForm = styled.form`
-${theme.flexCenter};
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 70px;
-  z-index: 1;
-  max-width: 100%;
-  padding: 20px;
-  background: ${theme.bg.f5};
-`
+const NoteListForm = styled.section`
+  .mj {
+		&__title {
+			&__hidden {
+				${theme.hidden};
+			}
+		}
 
-const AddInput = styled.input`
-  width: 100%;
-  height: 40px;
-  border: 1px solid ${theme.color.ec};
-  border-radius: 8px;
-  padding: 0 20px;
+    &__noteList {
+      &__wrapper {
+				${theme.flexCenter};
+				justify-content: space-between;
+				position: fixed;
+				left: 0;
+				right: 0;
+				bottom: 57px;
+				z-index: 1;
+				max-width: 100%;
+				padding: 20px;
+				background: ${theme.bg.f5};
+			}
+
+      &__form {
+				width: 88%;
+			}
+
+			&__input {
+				width: 100%;
+				height: 40px;
+				padding: 0 20px;
+				border: 1px solid ${theme.color.ec};
+				border-radius: 8px;
+			}
+
+      &__button {
+        flex: 0 0 44px;
+				margin-left: 10px;
+				background: ${theme.color.white};
+      }
+    }
+  }
 `

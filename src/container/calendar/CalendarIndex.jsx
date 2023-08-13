@@ -71,7 +71,7 @@ const CalendarIndexSection = styled.section`
 				padding: 3px 10px;
 				background: ${theme.color.black};
 				border-radius: 20px;
-				font-size :10px;
+				font-size: 9px !important;
 				color: ${theme.color.white};
 				line-height: 1.2;
 			}
@@ -89,28 +89,29 @@ const CalendarIndexSection = styled.section`
 	.react-calendar__tile--now {
 		position: relative;
 		z-index: 0;
-		color: ${theme.color.white};
 		background: none;
+		color: ${theme.color.white};
 
-		&:after {
-			content: "";
-			display: block;
-			position: absolute;
-			top: 4px;
-			left: 4px;
-			z-index: -1;
-			width: 30px;
-			height: 30px;
-			border-radius: 50%;
-			background: ${theme.color.black};
-			color: ${theme.color.white};
+		> abbr {
+			&:after {
+				content: "";
+				position: absolute;
+				top: -6px;
+				left: -6px;
+				z-index: -1;
+				width: 28px;
+				height: 28px;
+				border-radius: 50%;
+				background: ${theme.color.black};
+				color: ${theme.color.white};
+			}
 		}
   }
 
 	//day 타일 한개 한개 모양 커스텀하기
 	.react-calendar__tile {
 		position: relative;
-		min-height: 70px;
+		min-height: 60px;
 		padding: 37px 2px 4px;
 		border : 0.5px solid ${theme.color.ec};
 

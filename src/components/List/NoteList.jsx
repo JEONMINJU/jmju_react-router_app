@@ -38,6 +38,12 @@ export default function NoteList({ todos, setTodos }) {
         ))}
         </Swiper>
 
+        {todos.length < 1 &&
+        <div className="mj__empty">
+          <p className="mj__empty__text">등록된 리스트가 없습니다.</p>
+        </div>
+        }
+
         {/* 입력 인풋 */}
         <AddNoteList onAdd={handleAdd} />
       </Container>

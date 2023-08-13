@@ -38,8 +38,8 @@ const GlobalStyles = createGlobalStyle`
     };
 
 		h2, p {
-   		margin: 0;
-  	}
+      margin: 0;
+    }
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -59,6 +59,30 @@ const GlobalStyles = createGlobalStyle`
 			padding-left: 0px;
       list-style: none;
     };
+
+    input[type="text"], 
+    input[type="password"], 
+    input[type="email"], 
+    input[type="search"], 
+    input[type="image"], 
+    input[type="tel"], 
+    button, 
+    select, 
+    textarea{
+      -webkit-border-radius: 0;
+      -webkit-appearance: none;
+    }
+
+    .mj {
+      &__empty {
+        ${theme.flexCenter};
+        min-height: 300px;
+
+        &__text {
+          color: ${theme.color[79]};
+        }
+      }
+    }
 `;
 
 export default GlobalStyles;

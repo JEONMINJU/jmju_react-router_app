@@ -99,7 +99,6 @@ const AddListForm = styled.section`
 				flex: 0 0 44px;
 				margin-left: 10px;
 				background: ${theme.color.white};
-				cursor: pointer;
 			}
 		}
 	}
