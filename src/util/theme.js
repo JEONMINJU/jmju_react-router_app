@@ -13,9 +13,14 @@ const point = {
 }
 
 const color = {
-  black: '#111',
   white: '#fff',
+  f7: '#f7f7f7',
   ec: '#ececec',
+  da: '#dadada',
+  c1: '#c1c1c1',
+  af: '#afafaf',
+  79: '#797979',
+  black: '#111',
 }
 
 // 배경 컬러

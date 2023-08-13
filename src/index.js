@@ -5,7 +5,6 @@ import './index.css';
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Reset }from 'styled-reset'
 
 // #region dayjs
 // import * as dayjs from "dayjs";
@@ -30,6 +29,7 @@ import CalendarIndex from './container/calendar/CalendarIndex';
 import WorkIndex from './container/work/WorkIndex';
 import NoteIndex from './container/note/NoteIndex';
 import { ThemeProvider } from './context/ThemeContext';
+import GlobalStyles from './styles/globalStyles';
 // import AppProducts from './AppProducts';
 // import App from './App';
 const router = createBrowserRouter([
@@ -54,10 +54,7 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Reset />
-    {/* <AppProducts /> */}
-    {/* <AppWrap /> 컴포넌트 재사용 */}
-
+    <GlobalStyles />
     <ThemeProvider>
       <RouterProvider router={router} />
     </ThemeProvider>
