@@ -85,6 +85,11 @@ display: flex;
 justify-content: space-around;
 align-items: center;
 `
+
+const flexColumn = css`
+display: flex;
+flex-direction: column;
+`
 // #endregion
 
 // #region img
@@ -118,6 +123,7 @@ const theme = {
   flexCenter,
   flexbetween,
   flexAround,
+  flexColumn,
 
   imgFitCover,
 

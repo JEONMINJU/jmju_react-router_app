@@ -138,7 +138,7 @@ const Wrapper = styled.li`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: 100px;
+    min-height: 180px;
     padding: 16px;
     background: ${theme.bg.f5};
     border-radius: 6px;

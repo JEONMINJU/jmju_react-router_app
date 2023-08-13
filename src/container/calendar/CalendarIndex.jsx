@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import CalendarAddModal from './CalendarAddModal';
 import { getLocalStorage, setLocalStorage } from '../../util/util';
 import Dockbar from '../../components/Dockbar/Dockbar';
+import theme from '../../util/theme';
 
 function CalendarIndex() {
 	const [value, onChange] = useState(new Date());
@@ -48,7 +49,6 @@ function CalendarIndex() {
 							return matchWithAdded?.map(item=><div className='mj__calendar__list'>{item.text}</div>)
 						}} 
 					/>
-
 					<CalendarAddModal onAdd={onAddSchedule}/>
 				</div>
 			</CalendarIndexSection>
@@ -68,9 +68,12 @@ const CalendarIndexSection = styled.section`
 
 			&__list {
 				margin-top: 4px;
-				padding: 4px 0;
-				background: #ffa454;
-				border-radius: 2px;
+				padding: 3px 10px;
+				background: ${theme.color.black};
+				border-radius: 20px;
+				font-size :10px;
+				color: ${theme.color.white};
+				line-height: 1.2;
 			}
 		}
 	}
@@ -84,33 +87,65 @@ const CalendarIndexSection = styled.section`
 
 	//달력에 오늘 표시 변경하기
 	.react-calendar__tile--now {
-    background: #ffa454;
-    color: #fff;
-  }
-  .react-calendar__tile--now:enabled:hover,
-  .react-calendar__tile--now:enabled:focus {
-    /* color: ; */
+		position: relative;
+		z-index: 0;
+		color: ${theme.color.white};
+		background: none;
+
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			top:50%;
+			left: 50%;
+			z-index: -1;
+			transform: translate(-50%, -50%);
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: ${theme.color.black};
+			color: ${theme.color.white};
+		}
   }
 
 	//day 타일 한개 한개 모양 커스텀하기
 	.react-calendar__tile {
-    /* color:;
-    background: ;
-    text-align: ; */
+		padding: 0;
 		height: 70px;
-		border : 1px solid #eee;
+		border : 0.5px solid ${theme.color.ec};
+  }
+
+	.react-calendar__tile--active {
+    background: none;
+    color: inherit;
+    > abbr {
+      color: #fd4381 !important;
+    }
+  }
+
+	// 비활성
+	.react-calendar__month-view__days__day--neighboringMonth {
+    > abbr {
+      color: ${theme.color.ec} !important;
+    }
   }
 
 	//day 타일 hover, focus 시 모양 커스텀
 	.react-calendar__tile:enabled:hover,
   .react-calendar__tile:enabled:focus {
-    background-color: none;
-    border-radius: 4px;
-    /* color: #fff; */
+    background: none;
   }
-`
 
-const CalendarAdd = styled.button`
+	// click, focus, hover none
+	.react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    background: none;
+  }
 
+	// 오늘 날짜 bg none
+	.react-calendar__tile--now:enabled:hover,
+  .react-calendar__tile--now:enabled:focus {
+		background: none;
+  }
 `
 

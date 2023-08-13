@@ -1,9 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
+import theme from '../util/theme';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
-		
+
     * {
       box-sizing: border-box;
     };
@@ -18,16 +19,27 @@ const GlobalStyles = createGlobalStyle`
     }
 
     button {
-			background-color:transparent;
-			border:0 none;
-			cursor:pointer
+			padding: 0;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+
+			&.sizeS {
+				padding: 4px 8px;
+				border: 1px solid ${theme.color.da};
+				border-radius: 3px;
+			}
 		};
 
     body {
       position: relative;
       color: #111;
-      font-family: 'Pretendard' sans-serif;
+      font-family: 'Pretendard', sans-serif;
     };
+
+		h2, p {
+   		margin: 0;
+  	}
 
     input::-webkit-outer-spin-button,
     input::-webkit-inner-spin-button {
@@ -37,6 +49,10 @@ const GlobalStyles = createGlobalStyle`
 
     input[type="number"] {
 			-moz-appearance: textfield;
+    };
+
+    input[type="text" i] {
+      padding: none;
     };
 
     ul,li{

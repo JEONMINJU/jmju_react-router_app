@@ -6,6 +6,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { getLocalStorage, setLocalStorage } from '../../util/util';
 import { v4 as uuidv4 } from "uuid";
 import dayjs from 'dayjs';
+import { BsX } from 'react-icons/bs';
+import { Calendar } from 'react-calendar';
 
 export default function CalendarAddModal({onAdd}) {
 	const [modal, setModal] = useState(false);
@@ -50,17 +52,20 @@ export default function CalendarAddModal({onAdd}) {
 
 	return (
 		<>
-			<button 
-				type="button"
-				onClick={onToggleMoal}
-			>
-				+
-			</button>
+			<CalendarAdd>
+				<button 
+					type="button"
+					className='sizeS'
+					onClick={onToggleMoal}
+				>
+					캘린더에 일정 추가
+				</button>
+			</CalendarAdd>
 
 			{modal && (
 				<CalendarModal>
 					<section className='mj__modal'>
-						<h2 className='mj__title__hidden'>일정 추가</h2>
+						<h2 className='mj__title__hidden'>일정 추가 모달</h2>
 
 						<div 
 							onClick={onModalClose}
@@ -75,23 +80,25 @@ export default function CalendarAddModal({onAdd}) {
 								className='mj__modal__close'
 								onClick={onModalClose}
 							>
-								닫기
+								<BsX size={24} />
 							</button>
 							</header>
 
 							<div className='mj__modal__inner'>
-								{/* 날짜 선택 */}
-								<DatePicker
-									showIcon
-									dateFormat='yyyy.MM.dd'
-									shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
-									selected={startDate}
-									onChange={(date) => setStartDate(date)}
-								/>
+								<div className='mj__modal__calendar'>
+									<span className='mj__modal__subject'>날짜 선택</span>
 
-								{/* 내용 입력 */}
+									<DatePicker
+										showIcon={false}
+										dateFormat='yyyy.MM.dd'
+										shouldCloseOnSelect // 날짜를 선택하면 datepicker가 자동으로 닫힘
+										selected={startDate}
+										onChange={(date) => setStartDate(date)}
+									/>
+								</div>
+
 								<div className='mj__modal__write'>
-									<span>어떤 일정이 있나요?</span>
+									<span className='mj__modal__subject'>어떤 일정이 있나요?</span>
 									
 									<form className='mj__modal__form'>
 										<input 
@@ -104,9 +111,10 @@ export default function CalendarAddModal({onAdd}) {
 									</form>
 								</div>
 
-								{/* 추가 버튼 */}
-								<div className='mj__modal__button'>
-									<button type='button' className='mj__modal__add' onClick={onAddSchedule}>추가</button>
+								<div className='mj__modal__add'>
+									<button type='button' className='mj__modal__button sizeS' onClick={onAddSchedule}>
+										추가
+									</button>
 								</div>
 							</div>
 						</div>
@@ -116,6 +124,19 @@ export default function CalendarAddModal({onAdd}) {
 		</>
 	)
 };
+
+const CalendarAdd = styled.div`
+	${theme.flexCenter};
+	justify-content: flex-end;
+
+	button {
+		color: ${theme.color[79]};
+
+		&:hover {
+			background: ${theme.bg.f5};
+		}
+	}
+`
 
 const CalendarModal = styled.div`
 	position: relative;
@@ -160,7 +181,7 @@ const CalendarModal = styled.div`
 			&__header {
 				${theme.flexCenter}
 				justify-content: space-between;
-				padding: 20px;
+				padding: 16px;
 				border-bottom: 1px solid ${theme.color.ec};
 			}
 
@@ -173,10 +194,6 @@ const CalendarModal = styled.div`
 				padding: 20px;
 			}
 
-			&__button {
-				text-align: right;
-			}
-
 			// reset 필요
 			&__input {
 				width: 300px;
@@ -187,8 +204,19 @@ const CalendarModal = styled.div`
 				margin-top: 20px;
 			}
 
+			&__calendar {
+				${theme.flexColumn};
+				gap: 10px;
+			}
+
+			&__subject {
+				font-size: 14px;
+			}
+
 			&__add {
-				margin-top: 10px;
+				position: absolute;
+				right: 20px;
+				bottom: 30px;
 			}
 		}
 	}

@@ -58,16 +58,18 @@ function WorkIndex() {
 		<>
 			<CommonHeader title = 'Work List' />
 			<WorkIndexSection>
+				<h2 className="mj__title__hidden">업무 리스트(오늘 할일) 작성페이지</h2>
+
 				<div className="mj__work__top">
-					<h2 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h2>
-					<button type="button" className="mj__work__delete--all" onClick={handleDeleteAll}>전체삭제</button>
-					
+					<h3 className="mj__work__title">오늘의 업무 리스트를 작성하세요.</h3>
+					<button type="button" className="mj__work__button sizeS" onClick={handleDeleteAll}>전체삭제</button>
 				</div>
-				{/* 할일 개수 */}
+
 				<span className="mj__work__total">할일 : {list.length}개</span>
-				<div>
-					<button type="button" onClick={allChecked}>전체선택</button>
-					<button type="button" onClick={onCheckedDelete}>선택삭제</button>
+
+				<div className="mj__work__control">
+					<button type="button" className="mj__work__button sizeS" onClick={allChecked}>전체선택</button>
+					<button type="button" className="mj__work__button sizeS" onClick={onCheckedDelete}>선택삭제</button>
 				</div>
 
 				{list && <ListTextType notify={notify} list={list} setLists={setLists} />}	
@@ -104,47 +106,26 @@ const WorkIndexSection = styled.section`
 			}
 
 			&__title {
-				font-size: 13px;
+				font-size: 14px;
 			}
 
 			&__total {
 				display: block;
 				margin-top: 10px;
-				font-size: 12px;
+				font-size: 14px;
 			}
 
-			&__box {
-				margin: 20px 0;
-				border-radius: 10px;
-				border: 1px solid ${theme.color.black};
-			}
-
-			&__list {
-				position: relative;
+			&__control {
 				${theme.flexStart};
-				padding: 20px 16px;
-
-				&:not(:last-child) {
-					border-bottom: 1px solid ${theme.color.ec};
-				}
+				gap: 8px;
+				margin-top: 20px;
 			}
 
-			&__delete {
-				position: absolute;
-				right: 16px;
-				cursor: pointer;
+			&__button {
+				color: ${theme.color[79]};
 
-				/* reset 고민 */
-				background: none;
-				border: none;
-				padding: 0;
-
-				&--all {
-
-				}
-
-				&--checked {
-					
+				&:hover {
+					background: ${theme.bg.f5};
 				}
 			}
 		}

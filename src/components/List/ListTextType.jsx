@@ -80,6 +80,29 @@ const List = styled.div`
           }
         }
       }
+
+      &__box {
+        overflow-y: auto;
+        max-height: 350px;
+        margin: 20px 0;
+				border-radius: 10px;
+				border: 1px solid ${theme.color.black};
+      }
+
+      &__list {
+        position: relative;
+				${theme.flexStart};
+				padding: 20px 16px;
+
+				&:not(:last-child) {
+					border-bottom: 1px solid ${theme.color.ec};
+				}
+      }
+
+      &__delete {
+        position: absolute;
+        right: 20px;
+      }
     }
   }
 `

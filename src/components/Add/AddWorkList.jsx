@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import theme from "../../util/theme";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
-import { BsPlusCircleDotted } from "react-icons/bs";
 
 export default function AddList({ onAdd }) {
 	const [inputText, setInputText] = useState('');
@@ -52,7 +51,7 @@ export default function AddList({ onAdd }) {
 				/>
 				</form>
 
-				<button type="button" className="mj__addList__button" onClick={onClick}>
+				<button type="button" className="mj__addList__button sizeS" onClick={onClick}>
 					추가
 				</button>
 			</div>
@@ -85,21 +84,20 @@ const AddListForm = styled.section`
 			}
 
 			&__form {
-				width: 77%;
+				width: 88%;
 			}
 
 			&__input {
 				width: 100%;
 				height: 40px;
+				padding: 0 20px;
 				border: 1px solid ${theme.color.ec};
 				border-radius: 8px;
-				padding: 0 20px;
 			}
 
 			&__button {
+				flex: 0 0 44px;
 				margin-left: 10px;
-				background: none;
-				border: none;
 				cursor: pointer;
 			}
 		}

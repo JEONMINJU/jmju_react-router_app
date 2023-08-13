@@ -12,6 +12,7 @@ import styled from "styled-components";
 /* 로컬 저장 */
 import { getLocalStorage, setLocalStorage } from "../../util/util";
 import CommonHeader from "../../components/Header/CommonHeader";
+import theme from "../../util/theme";
 
 function NoteIndex() {
   // let [searchParams] = useSearchParams();
@@ -33,16 +34,47 @@ function NoteIndex() {
     }
   }, [todos, mount]); // 값이 변경될 때마다 실행될 코드
 
+  /* 전체삭제 */
+	const handleDeleteAll = () => {
+		setTodos([]);
+	};
+
   return (
-    <NoteContainer className="mj__app__container">
+    <>
       <CommonHeader title = 'Note & Issue'/>
-      <NoteList todos={todos} setTodos={setTodos} />
-    </NoteContainer>
+      <NoteIndexSection>
+        <h2 className="mj__title__hidden">오늘의 이슈, 메모 등 등록페이지</h2>
+        
+        <div className="mj__note__top">
+					<h3 className="mj__note__title">오늘 있었던 일을 기록해주세요.</h3>
+          <button type="button" className="mj__note__button sizeS" onClick={handleDeleteAll}>전체삭제</button>
+				</div>
+        
+        <NoteList todos={todos} setTodos={setTodos} />
+      </NoteIndexSection>
+    </>
   );
 }
 
-const NoteContainer = styled.div`
-  
+const NoteIndexSection = styled.section`
+  .mj__title__hidden {
+		${theme.hidden};
+	}
+
+  padding: 20px;
+
+  .mj {
+    &__note {
+      &__title {
+        font-size: 14px;
+      }
+
+      &__top {
+        ${theme.flexCenter};
+				justify-content: space-between;
+      }
+    }
+  }
 `;
 
 export default NoteIndex;
