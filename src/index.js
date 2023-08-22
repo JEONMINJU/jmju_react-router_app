@@ -30,6 +30,7 @@ import WorkIndex from './container/work/WorkIndex';
 import NoteIndex from './container/note/NoteIndex';
 import { ThemeProvider } from './context/ThemeContext';
 import GlobalStyles from './styles/globalStyles';
+import { isMobile } from 'react-device-detect';
 // import AppProducts from './AppProducts';
 // import App from './App';
 const router = createBrowserRouter([
@@ -50,6 +51,12 @@ const router = createBrowserRouter([
     element: <NoteIndex />,
   },
 ]);
+
+const body = document.body;
+
+if(!isMobile) {
+  body.classList.add('isWeb')
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

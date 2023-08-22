@@ -147,7 +147,7 @@ const MainContainer = styled.section`
 				display: flex;
 				flex-direction: column;
 				max-width: 100%;
-				margin-top: 60px;
+				margin-top: 87px;
 				padding: 24px 20px;
 				background: ${theme.color.white};
 				border-radius: 20px 20px 0 0;

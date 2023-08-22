@@ -74,11 +74,12 @@ const AddListForm = styled.section`
 				${theme.flexCenter};
 				justify-content: space-between;
 				position: fixed;
-				left: 0;
+				left: 50%;
 				right: 0;
 				bottom: 57px;
 				z-index: 1;
-				max-width: 100%;
+				transform: translateX(-50%);
+				width: 100%;
 				padding: 20px;
 				background: ${theme.bg.f5};
 			}

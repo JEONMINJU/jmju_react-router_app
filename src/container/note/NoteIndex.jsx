@@ -46,7 +46,13 @@ function NoteIndex() {
         <h2 className="mj__title__hidden">오늘의 이슈, 메모 등 등록페이지</h2>
         
         <div className="mj__note__top">
-					<h3 className="mj__note__title">오늘 있었던 일을 기록해주세요.</h3>
+          <div className="mj__note__title">
+            <h3 className="title__sub">아주 사소한 이벤트라도 기록으로 남겨보세요.</h3>
+            <span className="title__desc">
+              훗날 어떤 일을 했는지, 어떤 삶을 살아왔는지 돌아볼 수 있는 자료가 되었으면 합니다.
+            </span>
+          </div>
+
           <button type="button" className="mj__note__button sizeS" onClick={handleDeleteAll}>전체삭제</button>
 				</div>
         
@@ -65,13 +71,31 @@ const NoteIndexSection = styled.section`
 
   .mj {
     &__note {
-      &__title {
-        font-size: 14px;
-      }
-
       &__top {
         ${theme.flexCenter};
 				justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      &__title {
+        margin-right: 12px;
+        font-size: 14px;
+
+        .title {
+          &__sub {
+
+          }
+
+          &__desc {
+            display: block;
+            margin-top: 10px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      &__button {
+        flex: 0 0 64px;
       }
     }
   }

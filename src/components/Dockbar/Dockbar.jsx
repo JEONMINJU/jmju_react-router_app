@@ -67,10 +67,11 @@ export default function Dockbar() {
 
 const DockbarSection = styled.section`
 	position: fixed;
-	left: 0;
+	left: 50%;
 	bottom: 0;
 	width: 100%;
 	z-index: 11;
+	transform: translateX(-50%);
 	${theme.flexAround};
 	padding: 20px 0;
 	background: ${theme.bg.f5};

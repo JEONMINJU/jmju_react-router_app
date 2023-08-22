@@ -78,15 +78,16 @@ export default function Note({ todo, setTodos }) {
             />
           </>
         ) : (
-          <>
-            <input
-              type="checkbox"
-              id="checkbox"
-              checked={status === "completed"}
-              onChange={handleChange}
-            />
-            <label htmlFor="checkbox">{text}</label>
-          </>
+          // <>
+          //   <input
+          //     type="checkbox"
+          //     id="checkbox"
+          //     checked={status === "completed"}
+          //     onChange={handleChange}
+          //   />
+          //   <label htmlFor="checkbox">{text}</label>
+          // </>
+          <p>{text}</p>
         )}
       </form>
 
