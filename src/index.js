@@ -31,6 +31,7 @@ import NoteIndex from './container/note/NoteIndex';
 import { ThemeProvider } from './context/ThemeContext';
 import GlobalStyles from './styles/globalStyles';
 import { isMobile } from 'react-device-detect';
+import InfoIndex from './container/info/InfoIndex';
 // import AppProducts from './AppProducts';
 // import App from './App';
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/note",
     element: <NoteIndex />,
+  },
+  {
+    path: "/info",
+    element: <InfoIndex />,
   },
 ]);
 
