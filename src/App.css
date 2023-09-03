@@ -39,7 +39,7 @@ body {
 
 /* web default */
 body.isWeb {
-  width: 500px;
+  width: 500px !important;
   height: 100%;
   min-height: 100vh;
   margin: 0 auto;
@@ -48,7 +48,7 @@ body.isWeb {
   border-right: 1px solid #eee;
 }
 
-body.isWeb > #root > .llTUxV {
+body.isWeb .llTUxV {
   width: 500px !important;
 }
 

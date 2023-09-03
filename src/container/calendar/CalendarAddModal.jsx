@@ -152,6 +152,7 @@ const CalendarModal = styled.div`
 			right: 0;
 			bottom: 0;
 			left: 0;
+			z-index: 12;
 			width: 100%;
 			height: 100vh;
 
@@ -161,6 +162,7 @@ const CalendarModal = styled.div`
 				right: 0;
 				bottom: 0;
 				left: 0;
+				z-index: 12;
 				width: 100%;
 				height: 100vh;
 				background-color: rgba(49, 49, 49, .8);
@@ -170,7 +172,7 @@ const CalendarModal = styled.div`
 				position: absolute;
 				top: 50%;
 				left: 50%;
-				z-index: 1;
+				z-index: 13;
 				transform: translate(-50%, -50%);
 				width: 340px;
 				min-height: 340px;
