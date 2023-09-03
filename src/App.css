@@ -49,9 +49,13 @@ body.isWeb {
 }
 
 body.isWeb > #root > .llTUxV {
-  width: 500px;
+  width: 500px !important;
 }
 
-body.isWeb > #root > .enlrHG .mj__addList__wrapper {
-  width: 500px;
+body.isWeb .mj__noteList__wrapper {
+  width: 500px !important;
+}
+
+body.isWeb .mj__addList__wrapper {
+  width: 500px !important;
 }

@@ -16,7 +16,8 @@ import feelingImg06 from '../../images/main/img_main_feeling06.png';
 import feelingImg07 from '../../images/main/img_main_feeling07.png';
 import feelingImg08 from '../../images/main/img_main_feeling08.png';
 import Dockbar from "../../components/Dockbar/Dockbar";
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Parallax } from "swiper";
 
 function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
@@ -82,25 +83,27 @@ function Main() {
 						<h3 className="mj__main__title">매일을 기록하세요.</h3>
 
 						<div className="mj__main__inner">
+							
 							{/* 오늘 날짜 캘린더 */}
 							<div>
 								<span className="nav__date">{date}</span>
 							</div>
 
-							{/* 캘린더 */}
-							<Link to="/calendar">
-								<button type="button" className="mj__main__direct">CALENDAR</button>
-							</Link>
+							<div className="mj__main__menu">
+								<Link to="/calendar">
+									<button type="button" className="mj__main__direct">CALENDAR</button>
+								</Link>
 
-							{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
-							<Link to="/work">
-								<button type="button" className="mj__main__direct">WORK</button>
-							</Link>
+								{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
+								<Link to="/work">
+									<button type="button" className="mj__main__direct">WORK</button>
+								</Link>
 
-							{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
-							<Link to="/note">
-								<button type="button" className="mj__main__direct">ISSUE</button>
-							</Link>
+								{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
+								<Link to="/note">
+									<button type="button" className="mj__main__direct">ISSUE</button>
+								</Link>
+							</div>
 						</div>
 					</div>
 			</MainContainer>
@@ -148,14 +151,22 @@ const MainContainer = styled.section`
 				flex-direction: column;
 				max-width: 100%;
 				margin-top: 87px;
-				padding: 24px 20px;
+				padding: 32px 20px;
 				background: ${theme.color.white};
 				border-radius: 20px 20px 0 0;
 				box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 			}
 
+			&__menu {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 10px;
+			}
+
 			&__direct {
-				width: 100%;
+				min-width: 146px;
+				height: 80px;
 				padding: 20px 10px;
 				margin-top: 16px;
 				border-radius: 10px;

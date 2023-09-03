@@ -81,7 +81,7 @@ const CalendarIndexSection = styled.section`
 	.react-calendar {
 		overflow: hidden;
 		width: 700px;
-		margin: 30px auto;
+		margin: 20px auto;
 		border-radius: 10px;
 	}
 

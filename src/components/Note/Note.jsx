@@ -139,7 +139,7 @@ const Wrapper = styled.li`
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
-    min-height: 180px;
+    min-height: 150px;
     padding: 16px;
     background: ${theme.bg.f5};
     border-radius: 6px;
@@ -161,7 +161,8 @@ const TodoDate = styled.span`
 // 버튼 컨트롤(수정,삭제)
 const TodoConrol = styled.div`
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: flex-end;
     row-gap: 10px;
     margin-top: 20px;
 `;
