@@ -69,12 +69,13 @@ const GlobalStyles = createGlobalStyle`
     input[type="search"], 
     input[type="image"], 
     input[type="tel"], 
-    button, 
     select, 
     textarea{
-      -webkit-border-radius: 0;
+      /* -webkit-border-radius: 0;
       -webkit-appearance: none;
-      color: initial;
+      color: initial; */
+      border: 1px solid ${theme.color.da};
+      border-radius: 2px;
     }
 
     .mj {

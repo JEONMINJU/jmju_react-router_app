@@ -85,7 +85,7 @@ function Main() {
 						<div className="mj__main__inner">
 							
 							{/* 오늘 날짜 캘린더 */}
-							<div>
+							<div className="mj__main__date">
 								<span className="nav__date">{date}</span>
 							</div>
 
@@ -146,6 +146,10 @@ const MainContainer = styled.section`
 				margin-bottom: 10px;
 			}
 
+			&__date {
+				margin-bottom: 10px;
+			}
+
 			&__wrapper {
 				display: flex;
 				flex-direction: column;
@@ -154,21 +158,17 @@ const MainContainer = styled.section`
 				padding: 32px 20px;
 				background: ${theme.color.white};
 				border-radius: 20px 20px 0 0;
-				box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 			}
 
 			&__menu {
 				display: flex;
-				align-items: center;
-				justify-content: center;
+				flex-direction: column;
 				gap: 10px;
 			}
 
 			&__direct {
-				min-width: 146px;
-				height: 80px;
+				width: 100%;
 				padding: 20px 10px;
-				margin-top: 16px;
 				border-radius: 10px;
 				border: none;
 				box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;

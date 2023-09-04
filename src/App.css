@@ -16,13 +16,41 @@
 .onDarkMode {
   background-color: black;
 
+  #root {
+    background-color: black !important;
+    min-height: 100vh;
+  }
+
   .mj__main__wrapper {
     border: 1px solid #fff;
     background-color: black !important;
   }
 
-  .nav__date {
+  .mj__main__direct {
+    background-color: #fff;
+  }
+
+  .nav__date,
+  .nav__menu,
+  .mj__header__title,
+  .mj__main__title,
+  .mj__work__title,
+  .mj__work__total,
+  .mj__work__list,
+  .mj__work__delete,
+  .mj__note__top,
+  .mj__note__button,
+  .feeling__title,
+  .emNLa {
     color: #fff;
+  }
+ 
+  .hszVUn .mj__work__box {
+    border: 1px solid #fff;
+  }
+
+  .fYNcYR .swiper-slide li {
+    border: 1px solid #fff;
   }
 }
 
