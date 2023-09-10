@@ -18,23 +18,49 @@ import feelingImg08 from '../../images/main/img_main_feeling08.png';
 import Dockbar from "../../components/Dockbar/Dockbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Parallax } from "swiper";
+import { getLocalStorage, setLocalStorage } from "../../util/util";
 
 function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
 	const {isDark, toggleDarkMode} = useDarkMode();
 	const feelingImg = [
-		feelingImg01,
-		feelingImg02,
-		feelingImg03,
-		feelingImg04,
-		feelingImg05,
-		feelingImg06,
-		feelingImg07,
-		feelingImg08,
+		{
+			image : feelingImg01,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg02,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg03,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg04,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg05,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg06,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg07,
+			message : '오늘도 화이팅!',
+		},
+		{
+			image : feelingImg08,
+			message : '오늘도 화이팅!',
+		},
 	];
 
-	const saveFeeling = () => {
-	}
+	const saveFeeling = (item) => {
+		// 얼럿 > 리로드 > 하단에 기록?
+	};
 
 	// const [x, setX] = useState(0);
 	// const [y, setY] = useState(0);
@@ -75,11 +101,16 @@ function Main() {
 							{feelingImg.map((item) => (
 								<li className="feeling__list" key={item} onClick={saveFeeling}>
 									<figure className="feeling__img">
-										<img src={item} alt="기분이미지" />
+										<img src={item.image} alt="기분이미지" />
 									</figure>
 								</li>
 							))}
 						</ul>
+
+						{/* 오늘의 기분 */}
+						<div>
+							<span>today</span>
+						</div>
 					</div>
 
 					<div className="mj__main__wrapper">
