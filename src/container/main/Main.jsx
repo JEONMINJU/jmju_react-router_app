@@ -33,6 +33,9 @@ function Main() {
 		feelingImg08,
 	];
 
+	const saveFeeling = () => {
+	}
+
 	// const [x, setX] = useState(0);
 	// const [y, setY] = useState(0);
 	const [position, setPosition] = useState({x:0, y:0, z:0});
@@ -70,7 +73,7 @@ function Main() {
 
 						<ul className="feeling__box">
 							{feelingImg.map((item) => (
-								<li className="feeling__list" key={item}>
+								<li className="feeling__list" key={item} onClick={saveFeeling}>
 									<figure className="feeling__img">
 										<img src={item} alt="기분이미지" />
 									</figure>
@@ -199,6 +202,11 @@ const MainContainer = styled.section`
 						height: 75px;
 						border-radius: 10px;
 						box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+						cursor: pointer;
+
+						&:hover {
+							transform: scale(1.1);
+						}
 					}
 
 					&__img {
