@@ -25,41 +25,51 @@ function Main() {
 	const {isDark, toggleDarkMode} = useDarkMode();
 	const feelingImg = [
 		{
+			id : 0,
 			image : feelingImg01,
 			message : '오늘도 화이팅!',
 		},
 		{
+			id : 1,
 			image : feelingImg02,
-			message : '오늘도 화이팅!',
+			message : '좋아요 ♡ ♡',
 		},
 		{
+			id : 2,
 			image : feelingImg03,
-			message : '오늘도 화이팅!',
+			message : '기분 최고인가요?',
 		},
 		{
+			id : 4,
 			image : feelingImg04,
-			message : '오늘도 화이팅!',
+			message : '괜찮아요. 잘 될거예요.',
 		},
 		{
+			id : 5,
 			image : feelingImg05,
-			message : '오늘도 화이팅!',
+			message : '할 수 있다!',
 		},
 		{
+			id : 6,
 			image : feelingImg06,
-			message : '오늘도 화이팅!',
+			message : '침착해!!!',
 		},
 		{
+			id : 7,
 			image : feelingImg07,
 			message : '오늘도 화이팅!',
 		},
 		{
+			id : 8,
 			image : feelingImg08,
-			message : '오늘도 화이팅!',
+			message : '긍정적으로 생각하자구요~',
 		},
 	];
 
 	const saveFeeling = (item) => {
 		// 얼럿 > 리로드 > 하단에 기록?
+		alert(`${item.message}`);
+		console.log("dd", item.message)
 	};
 
 	// const [x, setX] = useState(0);
@@ -99,7 +109,7 @@ function Main() {
 
 						<ul className="feeling__box">
 							{feelingImg.map((item) => (
-								<li className="feeling__list" key={item} onClick={saveFeeling}>
+								<li className="feeling__list" key={item.id} onClick={()=>saveFeeling(item)}>
 									<figure className="feeling__img">
 										<img src={item.image} alt="기분이미지" />
 									</figure>
@@ -109,7 +119,7 @@ function Main() {
 
 						{/* 오늘의 기분 */}
 						<div>
-							<span>today</span>
+							<span className="feeling__today"></span>
 						</div>
 					</div>
 
