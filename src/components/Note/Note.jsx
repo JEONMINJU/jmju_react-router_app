@@ -65,6 +65,22 @@ export default function Note({ todo, setTodos }) {
     // setLocalStorage("todo", setData);
   };
 
+  const [imageSrc, setImageSrc] = useState(null);
+
+  // 파일업로드
+  const onFileUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader(); // 선언한 파일로더로
+    reader.readAsDataURL(file); //파일 객체 읽어오기
+
+    return new Promise((resolve) => { 
+      reader.onload = () => {	
+          setImageSrc(reader.result || null); // 파일의 컨텐츠
+          resolve();
+      };
+    });
+  };
+
   return (
     <Wrapper>
       <form className="form">
@@ -109,6 +125,15 @@ export default function Note({ todo, setTodos }) {
           <FaTrashAlt />
         </CommonButton>
       </TodoConrol>
+
+      {/* 파일업로드 */}
+      <input 
+        type="file"
+        onChange={e => onFileUpload(e)}
+      ></input>
+
+      {/* 파일업로드 이미지 */}
+      <img width={'100%'} src={imageSrc}/>
     </Wrapper>
   );
 }
