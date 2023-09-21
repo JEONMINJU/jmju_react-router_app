@@ -11,17 +11,39 @@ export default function AddTodo({ onAdd }) {
   // onAdd 를 props로 받고
   const [text, setText] = useState(""); // 초기 빈값
   const handleChange = (e) => setText(e.target.value); // event가 발생하면 setText에 있는 타켓의 value로 설정할것
-  
+
+  const [imageSrc, setImageSrc] = useState(null);
+
+  // 파일업로드
+  const onFileUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader(); // 선언한 파일로더로
+    reader.readAsDataURL(file); //파일 객체 읽어오기
+
+    return new Promise((resolve) => { 
+      reader.onload = () => {	
+          setImageSrc(reader.result || null); // 파일의 컨텐츠
+          resolve();
+      };
+    });
+  };
+
   const handleAdd = () => {
     if (text.trim().length === 0) return;
 
-    onAdd({ id: uuidv4(), text: text, date, status: "active" });
+    onAdd({ 
+      id: uuidv4(), 
+      text: text, 
+      date, 
+      status: "active",
+      file: imageSrc,
+    });
 
     const storageTodos = getLocalStorage("todo") || [];
 
     setLocalStorage("todo", [
       ...storageTodos,
-      { id: uuidv4(), text: text, date, status: "active" },
+      { id: uuidv4(), text: text, date, status: "active", file: imageSrc },
     ]);
 
     setText('');
@@ -42,15 +64,27 @@ export default function AddTodo({ onAdd }) {
       <h2 className="mj__title__hidden">이슈, 메모 입력 폼</h2>
 
       <div className="mj__noteList__wrapper">
-        <form className="mj__noteList__form" onSubmit={onSubmit}>
+        <div className='mj__noteList__inner'>
+          <form className="mj__noteList__form" onSubmit={onSubmit}>
+            <input 
+              className="mj__noteList__input"
+              type="text" 
+              placeholder="텍스트를 입력해주세요."
+              value={text}
+              onChange={handleChange}
+            />
+          </form>
+
+          {/* 파일업로드 */}
           <input 
-            className="mj__noteList__input"
-            type="text" 
-            placeholder="텍스트를 입력해주세요."
-            value={text}
-            onChange={handleChange}
-          />
-        </form>
+            type="file"
+            onChange={e => onFileUpload(e)}
+            className="mj__noteList__fileUpload"
+          ></input>
+
+          {/* 파일업로드 이미지 */}
+          {/* <img width={'100%'} src={imageSrc}/> */}
+        </div>
 
         <button type="button" className="mj__noteList__button sizeS" onClick={onClick}>
           추가
@@ -72,6 +106,7 @@ const NoteListForm = styled.section`
     &__noteList {
       &__wrapper {
 				${theme.flexCenter};
+        align-items: flex-start;
 				justify-content: space-between;
 				position: fixed;
 				left: 50%;
@@ -84,8 +119,14 @@ const NoteListForm = styled.section`
 				background: ${theme.bg.f5};
 			}
 
+      &__inner {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+
       &__form {
-				width: 88%;
+				width: 100%;
 			}
 
 			&__input {
@@ -96,9 +137,13 @@ const NoteListForm = styled.section`
 				border-radius: 8px;
 			}
 
+      &__fileUpload {
+        margin-top: 14px;
+      }
+
       &__button {
         flex: 0 0 44px;
-				margin-left: 10px;
+				margin-left: 20px;
 				background: ${theme.color.white};
       }
     }
