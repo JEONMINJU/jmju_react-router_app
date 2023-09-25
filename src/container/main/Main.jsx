@@ -101,7 +101,7 @@ function Main() {
 
 					<nav className="mj__main__nav">
 						<BsList className="nav__menu" size="24" />
-						<span className="nav__date">{date}</span>
+						{/* <span className="nav__date">{date}</span> */}
 						<DarkModeButton onClick={toggleTheme}>{!isDark ? <BsToggleOn size="26" /> : <BsToggleOff size="26" color="#fff" />}</DarkModeButton>
 					</nav>
 
@@ -207,8 +207,8 @@ const MainContainer = styled.section`
 				display: flex;
 				flex-direction: column;
 				max-width: 100%;
-				margin-top: 50px;
-				padding: 32px 20px;
+				margin-top: 25px;
+				padding: 30px 20px;
 				background: ${theme.color.white};
 				border-radius: 20px 20px 0 0;
 			}

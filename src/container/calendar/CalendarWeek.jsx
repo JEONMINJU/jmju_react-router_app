@@ -12,6 +12,7 @@ import {
   subWeeks
 } from "date-fns";
 import styled from "styled-components";
+import theme from "../../util/theme";
 
 const Calendar = ({ showDetailsHandle }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
@@ -92,7 +93,7 @@ const Calendar = ({ showDetailsHandle }) => {
         const cloneDay = day;
         days.push(
           <div
-            className={`col cell ${
+            className={`mj__weekCalendar__list col cell ${
               isSameDay(day, new Date())
                 ? "today"
                 : isSameDay(day, selectedDate)
@@ -105,8 +106,8 @@ const Calendar = ({ showDetailsHandle }) => {
               onDateClickHandle(cloneDay, dayStr);
             }}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <span className="mj__weekCalendar__number">{formattedDate}</span>
+            {/* <span className="bg">{formattedDate}</span> */}
           </div>
         );
         day = addDays(day, 1);
@@ -119,7 +120,7 @@ const Calendar = ({ showDetailsHandle }) => {
       );
       days = [];
     }
-    return <div className="body">{rows}</div>;
+    return <div className="mj__weekCalendar__body">{rows}</div>;
   };
   const renderFooter = () => {
     return (
@@ -157,25 +158,54 @@ const CalendarWeekSection = styled.section`
 				display: block;
 				position: relative;
 				width: 100%;
-				background: var(--neutral-color);
-				border: 1px solid var(--border-color);
+				border: 1px solid ${theme.color.ec};
+				border-radius: 4px;
 			}
 
 			&__days {
-				text-transform: uppercase;
-				font-weight: 400;
-				color: var(--text-color-light);
-				font-size: 70%;
 				padding: 0.75em 0;
 				border-bottom: 1px solid var(--border-color);
+				color: var(--text-color-light);
+				font-size: 70%;
+				font-weight: 400;
+				text-transform: uppercase;
+			}
+
+			&__list {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				position: relative;
+				overflow: hidden;
+				height: 50px;
+				transition: 0.25s ease-out;
+				cursor: pointer;
+
+				&:not(:last-child) {
+					border-right: 1px solid ${theme.color.ec};
+				}
+
+				&:hover {
+					background: ${theme.bg.f5};
+  				transition: 0.5s ease-out;
+				}
+
+				&.today {
+					color: rgb(44, 180, 142);
+					font-weight: bold;
+					border-image-slice: 1;
+				}
+
+				.col {
+					flex-grow: 0;
+					flex-basis: calc(100% / 7);
+					width: calc(100% / 7);
+				}
+			}
+
+			&__number {
+				font-size: 16px;
 			}
 		}
 	}
 `
-/**
- * Header:
- * icon for switching to the previous month,
- * formatted date showing current month and year,
- * another icon for switching to next month
- * icons should also handle onClick events to change a month
- */

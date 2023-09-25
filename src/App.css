@@ -52,6 +52,14 @@
   .fYNcYR .swiper-slide li {
     border: 1px solid #fff;
   }
+
+  .mj__weekCalendar__number {
+    color: #fff;
+  }
+
+  .mj__weekCalendar__list.today > .mj__weekCalendar__number {
+    color: rgb(44, 180, 142);
+  }
 }
 
 /* 모달 오픈시 스크롤 막기 */
@@ -87,3 +95,4 @@ body.isWeb .mj__noteList__wrapper {
 body.isWeb .mj__addList__wrapper {
   width: 500px !important;
 }
+
