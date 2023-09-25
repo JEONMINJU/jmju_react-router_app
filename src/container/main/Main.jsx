@@ -19,9 +19,11 @@ import Dockbar from "../../components/Dockbar/Dockbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Parallax } from "swiper";
 import { getLocalStorage, setLocalStorage } from "../../util/util";
+import Calendar from "../calendar/CalendarWeek";
 
 function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
+	const month = dayjs(new Date()).format('MM');
 	const {isDark, toggleDarkMode} = useDarkMode();
 	const feelingImg = [
 		{
@@ -124,13 +126,13 @@ function Main() {
 					</div>
 
 					<div className="mj__main__wrapper">
-						<h3 className="mj__main__title">매일을 기록하세요.</h3>
+						<h3 className="mj__main__title"><strong>{month}</strong>월의 매일을 기록하세요.</h3>
 
 						<div className="mj__main__inner">
 							
-							{/* 오늘 날짜 캘린더 */}
+							{/* 오늘 날짜 week 캘린더 */}
 							<div className="mj__main__date">
-								<span className="nav__date">{date}</span>
+								<Calendar />
 							</div>
 
 							<div className="mj__main__menu">
@@ -187,7 +189,14 @@ const MainContainer = styled.section`
 			}
 
 			&__title {
+				display: flex;
+				align-items: center;
 				margin-bottom: 10px;
+
+				strong {
+					font-size: 20px;
+					font-weight: bold;
+				}
 			}
 
 			&__date {
