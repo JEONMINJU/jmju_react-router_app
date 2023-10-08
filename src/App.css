@@ -60,6 +60,15 @@
   .mj__weekCalendar__list.today > .mj__weekCalendar__number {
     color: rgb(44, 180, 142);
   }
+
+  .mj__header__back {
+    color: #fff;
+  }
+
+  /* 페이지 준비중 */
+  .mj__info__desc {
+    color: #fff;
+  }
 }
 
 /* 모달 오픈시 스크롤 막기 */

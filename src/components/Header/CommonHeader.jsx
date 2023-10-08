@@ -7,7 +7,7 @@ import theme from "../../util/theme";
 export default function CommonHeader(props) {
   return (
 		<CommonHeaderSection>
-      <BackLink to="/"><MdArrowBackIos size={24} /></BackLink>
+      <BackLink to="/"><MdArrowBackIos className="mj__header__back" size={24} /></BackLink>
 			<span className="mj__header__title">{props.title}</span>
 		</CommonHeaderSection>
   );
