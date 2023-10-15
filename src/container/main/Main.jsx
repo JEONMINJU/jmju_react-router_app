@@ -207,8 +207,7 @@ const MainContainer = styled.section`
 				display: flex;
 				flex-direction: column;
 				max-width: 100%;
-				margin-top: 25px;
-				padding: 30px 20px;
+				padding: 20px;
 				background: ${theme.color.white};
 				border-radius: 20px 20px 0 0;
 			}
@@ -248,8 +247,8 @@ const MainContainer = styled.section`
 					&__list {
 						position: relative;
 						overflow: hidden;
-						width: 75px;
-						height: 75px;
+						width: 60px;
+						height: 60px;
 						border-radius: 10px;
 						box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 						cursor: pointer;
