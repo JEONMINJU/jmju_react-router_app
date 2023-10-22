@@ -25,6 +25,7 @@ function Main() {
 	const date = dayjs(new Date()).format('YY/MM/DD');
 	const month = dayjs(new Date()).format('MM');
 	const {isDark, toggleDarkMode} = useDarkMode();
+	const {isOpenDrawer, setIsOpenDrawer} = useState(false);
 	const feelingImg = [
 		{
 			id : 0,
@@ -78,9 +79,15 @@ function Main() {
 	// const [y, setY] = useState(0);
 	const [position, setPosition] = useState({x:0, y:0, z:0});
 
-  const toggleTheme = () =>{
+  const toggleTheme = () => {
     toggleDarkMode(prev=>!prev);
   };
+
+	const [isOpen, setMenu] = useState(false);
+  
+  const toggleMenu = () => {
+		setMenu(isOpen => !isOpen);
+	}
 
 	// style={{
 		// backgroundColor: isDark? 'black' : 'white',
@@ -100,10 +107,15 @@ function Main() {
 					<h2 className="mj__text__hidden">메인페이지</h2>
 
 					<nav className="mj__main__nav">
-						<BsList className="nav__menu" size="24" />
+						<div onClick={()=>toggleMenu()}>
+						<BsList  className="nav__menu" size="24" />
+						</div>
 						{/* <span className="nav__date">{date}</span> */}
 						<DarkModeButton onClick={toggleTheme}>{!isDark ? <BsToggleOn size="26" /> : <BsToggleOff size="26" color="#fff" />}</DarkModeButton>
 					</nav>
+
+					<div className={isOpen ? "mj__main__drawer show" : "mj__main__drawer"}>
+					</div>
 
 					<div className="mj__main__feeling">
 						{/* <span className="feeling__title">How do you feeling today?</span> */}
@@ -185,6 +197,21 @@ const MainContainer = styled.section`
 					&__date {
 						margin-left: 10px;
 					}
+				}
+			}
+
+			&__drawer {
+				display: none;
+				position: absolute;
+				left: 0;
+				top: 0;
+				z-index: 20;
+				width: 60%;
+				height: 100%;
+				background: ${theme.color.white};
+
+				&.show {
+					display: block;
 				}
 			}
 
