@@ -7,6 +7,7 @@ import { useDarkMode } from "../../context/ThemeContext";
 import { 
 	BsList, BsToggleOff, BsToggleOn,
 } from "react-icons/bs"; 
+import jmjuImg from'../../images/jmju.JPG';
 import feelingImg01 from '../../images/main/img_main_feeling01.png';
 import feelingImg02 from '../../images/main/img_main_feeling02.png';
 import feelingImg03 from '../../images/main/img_main_feeling03.png';
@@ -165,6 +166,15 @@ function Main() {
 						</div>
 					</div>
 			</MainContainer>
+
+			<DirectBanner>
+				<figure className="mj__direct__img">
+					<img src={jmjuImg} alt="전민주로고이미지" />
+				</figure>
+
+				<span className="mj__direct__text">샘플 텍스트</span>
+			</DirectBanner>
+
 			<Dockbar />
 		</>
 	);
@@ -306,6 +316,42 @@ const MainContainer = styled.section`
 		border-radius: 50%; */
 	}
 `
+const DirectBanner = styled.section`
+	position: fixed;
+	top: 0;
+	left: 50%;
+	bottom: 0;
+	transform: translateX(307px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 284px;
+	height: 100%;
+	
+	.mj {
+		&__direct {
+			&__img {
+				overflow: hidden;
+				position: relative;
+				width: 80px;
+				height: 80px;
+				border: 1px solid ${theme.color.da};
+				border-radius: 10px;
+				
+				img {
+					${theme.imgFitCover};
+				}
+			}
+
+			&__text {
+				display: block;
+				margin-top: 10px;
+			}
+		}
+	}
+`
+
 const DarkModeButton = styled.button`
   position: absolute;
   top: 50%;
