@@ -108,10 +108,6 @@ function Main() {
 					<h2 className="mj__text__hidden">메인페이지</h2>
 
 					<nav className="mj__main__nav">
-						<div onClick={()=>toggleMenu()}>
-						<BsList  className="nav__menu" size="24" />
-						</div>
-						{/* <span className="nav__date">{date}</span> */}
 						<DarkModeButton onClick={toggleTheme}>{!isDark ? <BsToggleOn size="26" /> : <BsToggleOff size="26" color="#fff" />}</DarkModeButton>
 					</nav>
 
@@ -139,31 +135,34 @@ function Main() {
 					</div>
 
 					<div className="mj__main__wrapper">
-						<h3 className="mj__main__title"><strong>{month}</strong>월의 매일을 기록하세요.</h3>
-
-						<div className="mj__main__inner">
+						<section className="mj__main__inner">
+							<h3 className="mj__main__title"><strong>{month}</strong>월의 매일을 기록하세요.</h3>
 							
 							{/* 오늘 날짜 week 캘린더 */}
 							<div className="mj__main__date">
 								<Calendar />
 							</div>
+						</section>
+						
+						<section className="mj__main__inner">
+							<h3 className="mj__main__title today">Today's</h3>
 
 							<div className="mj__main__menu">
 								<Link to="/calendar">
-									<button type="button" className="mj__main__direct">CALENDAR</button>
+									<button type="button" className="mj__main__direct">일정 캘린더</button>
 								</Link>
 
 								{/* 오늘 업무 리스트(간단한 한줄 리스트) */}
 								<Link to="/work">
-									<button type="button" className="mj__main__direct">WORK</button>
+									<button type="button" className="mj__main__direct">업무 리스트</button>
 								</Link>
 
 								{/* 이슈 & 에피소드 등(슬라이드형 리스트) */}
 								<Link to="/note">
-									<button type="button" className="mj__main__direct">ISSUE</button>
+									<button type="button" className="mj__main__direct">이슈 & 일기</button>
 								</Link>
 							</div>
-						</div>
+						</section>
 					</div>
 			</MainContainer>
 
@@ -195,9 +194,9 @@ const MainContainer = styled.section`
 		&__main {
 			&__nav {
 				position: relative;
-				padding: 20px;
 				${theme.flexCenter};
 				justify-content: flex-start;
+				height: 46px;
 
 				.nav {
 					&__menu {
@@ -234,19 +233,27 @@ const MainContainer = styled.section`
 					font-size: 20px;
 					font-weight: bold;
 				}
+
+				&.today {
+					font-size: 16px;
+					font-weight: bold;
+				}
 			}
 
 			&__date {
-				margin-bottom: 10px;
 			}
 
 			&__wrapper {
 				display: flex;
 				flex-direction: column;
 				max-width: 100%;
-				padding: 20px;
+				padding: 0 20px;
 				background: ${theme.color.white};
 				border-radius: 20px 20px 0 0;
+			}
+
+			&__inner {
+				margin-top: 16px;
 			}
 
 			&__menu {
@@ -257,10 +264,10 @@ const MainContainer = styled.section`
 
 			&__direct {
 				width: 100%;
-				padding: 20px 10px;
+				padding: 8px 10px;
 				border-radius: 10px;
-				border: none;
-				box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+				border: 1px solid ${theme.color.ec};
+				/* box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset; */
 				cursor: pointer;
 			}
 
@@ -278,7 +285,7 @@ const MainContainer = styled.section`
 						align-items: center;
 						flex-wrap: wrap;
 						gap: 8px;
-						margin-top: 20px;
+						margin-top: 15px;
 					}
 
 					&__list {
@@ -354,9 +361,7 @@ const DirectBanner = styled.section`
 
 const DarkModeButton = styled.button`
   position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
+  right: 15px;
   min-width: 40px;
 	background: none;
 	border: none;
